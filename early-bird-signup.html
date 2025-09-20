@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sign up for early access to Baboo Stories. Receive launch updates, exclusive story packs, and help shape the future of bedtime storytelling."
+    />
+    <title>Early Bird Access | Baboo Stories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true">BS</span>
+          <span class="brand-name">Baboo Stories</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="app-links.html">Get the App</a>
+          <a href="about-developer.html">About the Developer</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="early-bird-signup.html" aria-current="page">Early Bird Access</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="signup-title">
+        <div class="form-card">
+          <span class="badge">Founding families get the first peek</span>
+          <h1 id="signup-title">Join the Baboo Stories early bird list</h1>
+          <p>
+            Share your details below and you'll receive launch news, exclusive
+            story samplers, and invitations to help us co-create the bedtime app
+            you've always wanted.
+          </p>
+          <form
+            action="https://formspree.io/f/xbjnnqaa"
+            method="POST"
+            aria-describedby="privacy-note"
+          >
+            <div>
+              <label for="name">Your name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Malaka Jayawardena"
+                required
+              />
+            </div>
+            <div>
+              <label for="email">Email address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <div>
+              <label for="children-ages">Children's ages</label>
+              <input
+                type="text"
+                id="children-ages"
+                name="children_ages"
+                placeholder="e.g. 4 and 7"
+                required
+              />
+            </div>
+            <div>
+              <label for="expectations">What do you expect from the app?</label>
+              <textarea
+                id="expectations"
+                name="expectations"
+                placeholder="Tell us about your dream bedtime routine..."
+                required
+              ></textarea>
+            </div>
+            <div>
+              <label for="how-heard">How did you hear about Baboo Stories?</label>
+              <select id="how-heard" name="how_heard">
+                <option value="">Select an option</option>
+                <option>Friend or family</option>
+                <option>Social media</option>
+                <option>Parenting community</option>
+                <option>Podcast or blog</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Count me in</button>
+          </form>
+          <div class="trust-panel" id="privacy-note">
+            <h3>Your trust matters</h3>
+            <p>
+              We only use your information to share app updates and invite you to
+              feedback sessions. No spam, no selling data—ever.
+            </p>
+            <p>
+              Read the <a href="privacy-policy.html">full privacy policy</a> to
+              learn how we protect your family's details.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2>Baboo Stories</h2>
+          <p>
+            Gentle, imaginative storytelling for families who want to raise
+            curious, kind, and confident kids.
+          </p>
+        </div>
+        <div class="footer-links">
+          <strong>Explore</strong>
+          <a href="index.html">Home</a>
+          <a href="app-links.html">Get the App</a>
+          <a href="early-bird-signup.html">Early Bird Access</a>
+        </div>
+        <div class="footer-links">
+          <strong>Company</strong>
+          <a href="about-developer.html">About the Developer</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="mailto:hello@baboostories.app">hello@baboostories.app</a>
+        </div>
+      </div>
+      <p class="footer-bottom">© <span id="year"></span> Baboo Stories. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const yearSpan = document.getElementById('year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>
