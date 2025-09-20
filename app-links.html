@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Download Baboo Stories for Android and join the waitlist for iOS. A gentle storytelling companion designed for parents and caregivers."
+    />
+    <title>Get Baboo Stories | App download links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" aria-hidden="true">BS</span>
+          <span class="brand-name">Baboo Stories</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="app-links.html" aria-current="page">Get the App</a>
+          <a href="about-developer.html">About the Developer</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="early-bird-signup.html">Early Bird Access</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="download-title">
+        <div class="hero-card">
+          <h1 id="download-title">Share the story magic with one easy link</h1>
+          <p>
+            Whether you're sharing Baboo Stories with fellow parents or
+            installing it on a new device, this page always has the latest
+            download options. Save it, share it, and keep bedtime adventures a
+            tap away.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#android">Get it on Android</a>
+            <a class="btn btn-secondary" href="#ios">iPhone waitlist</a>
+          </div>
+        </div>
+        <div class="info-panel">
+          <h3>Tip for easy sharing</h3>
+          <ul class="info-list">
+            <li>
+              <span class="highlight-icon" aria-hidden="true">🔗</span>
+              <div>
+                <strong>Copy this page link</strong>
+                <p>
+                  Use <code>baboostories.app/get</code> when inviting friends so
+                  they always land on the right store.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="highlight-icon" aria-hidden="true">📱</span>
+              <div>
+                <strong>Add it to your homescreen</strong>
+                <p>
+                  Keep Baboo Stories just one tap away by saving this page on
+                  your phone.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="highlight-icon" aria-hidden="true">❤️</span>
+              <div>
+                <strong>Share the love</strong>
+                <p>
+                  Tag <strong>@BabooStories</strong> on social to join the
+                  growing community of mindful storytellers.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="android">
+        <h2 id="android">Baboo Stories for Android</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Google Play Store</h3>
+            <p>
+              Download the latest production build from Google Play. Updates roll
+              out regularly with fresh stories and new calming soundscapes.
+            </p>
+            <a
+              class="btn btn-primary"
+              href="https://play.google.com/store/apps/details?id=com.baboostories.app"
+              target="_blank"
+              rel="noopener"
+            >
+              Open in Google Play
+            </a>
+          </article>
+          <article class="card">
+            <h3>Join the beta channel</h3>
+            <p>
+              Want to test the newest features first? Join our closed beta and
+              send feedback directly to the creator.
+            </p>
+            <a
+              class="btn btn-secondary"
+              href="mailto:hello@baboostories.app?subject=Baboo%20Stories%20Android%20Beta"
+            >
+              Request beta access
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="ios">
+        <h2 id="ios">Baboo Stories for iPhone (coming soon)</h2>
+        <div class="split-layout">
+          <div class="card">
+            <h3>Be first in line</h3>
+            <p>
+              We are crafting the iOS experience with the same love and attention
+              to detail as our Android app. Join the waitlist and we will email
+              you the moment Baboo Stories lands on the App Store.
+            </p>
+            <a class="btn btn-primary" href="early-bird-signup.html"
+              >Join the iOS waitlist</a
+            >
+          </div>
+          <div class="trust-panel">
+            <h3>What to expect</h3>
+            <ul>
+              <li>Elegant bedtime mode with calming visuals</li>
+              <li>Personalised story suggestions for every age</li>
+              <li>Seamless sync for households with mixed devices</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2>Baboo Stories</h2>
+          <p>
+            Gentle, imaginative storytelling for families who want to raise
+            curious, kind, and confident kids.
+          </p>
+        </div>
+        <div class="footer-links">
+          <strong>Explore</strong>
+          <a href="index.html">Home</a>
+          <a href="app-links.html">Get the App</a>
+          <a href="early-bird-signup.html">Early Bird Access</a>
+        </div>
+        <div class="footer-links">
+          <strong>Company</strong>
+          <a href="about-developer.html">About the Developer</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="mailto:hello@baboostories.app">hello@baboostories.app</a>
+        </div>
+      </div>
+      <p class="footer-bottom">© <span id="year"></span> Baboo Stories. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const yearSpan = document.getElementById('year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>
