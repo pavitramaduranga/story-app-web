@@ -109,6 +109,20 @@ main {
   align-items: center;
 }
 
+.home-banner {
+  max-width: var(--max-width);
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.home-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .hero-card {
   background: var(--bg-gradient);
   color: white;
