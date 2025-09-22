@@ -182,7 +182,8 @@ main {
   background: rgba(255, 255, 255, 0.32);
 }
 
-.btn-android {
+.btn-android,
+.btn-preview {
   background: linear-gradient(135deg, var(--brand-secondary), #ffd27f);
   color: var(--brand-dark);
   border: 1px solid rgba(247, 183, 51, 0.4);
@@ -195,12 +196,15 @@ main {
 }
 
 .btn-android:hover,
-.btn-android:focus {
+.btn-android:focus,
+.btn-preview:hover,
+.btn-preview:focus {
   transform: translateY(-3px);
   box-shadow: 0 20px 40px rgba(247, 183, 51, 0.45);
 }
 
-.btn-android:focus-visible {
+.btn-android:focus-visible,
+.btn-preview:focus-visible {
   outline: 3px solid rgba(49, 198, 212, 0.7);
   outline-offset: 2px;
 }
