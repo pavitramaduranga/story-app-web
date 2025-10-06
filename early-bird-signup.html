@@ -159,80 +159,12 @@
     </footer>
 
     <script>
-      // Keep only the year updater
       const yearSpan = document.getElementById('year');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
       }
-
-      const SCRIPT_URL =
-        'https://script.google.com/macros/s/AKfycb.../exec';
-      const SECRET_KEY = 'baboo-contact-20241006-cp2v3l8s';
-
-      const contactForm = document.getElementById('contact-form');
-      const formStatus = document.getElementById('form-status');
-
-      if (contactForm) {
-        contactForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-
-          if (!contactForm.reportValidity()) {
-            return;
-          }
-
-          const submitButton = contactForm.querySelector('button[type="submit"]');
-          const defaultButtonText = submitButton ? submitButton.textContent : '';
-
-          if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-          }
-
-          if (formStatus) {
-            formStatus.textContent = 'Sending your details...';
-            formStatus.classList.remove('error', 'success');
-          }
-
-          const formData = new FormData(contactForm);
-          const payload = Object.fromEntries(formData.entries());
-          payload.secret = SECRET_KEY;
-          payload.userAgent = navigator.userAgent;
-
-          try {
-            const response = await fetch(SCRIPT_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-            });
-
-            const result = await response.json();
-
-            if (!response.ok || !result.success) {
-              throw new Error(result.message || 'Submission failed');
-            }
-
-            if (formStatus) {
-              formStatus.textContent =
-                "You're on the list! We'll be in touch soon.";
-              formStatus.classList.add('success');
-            }
-
-            contactForm.reset();
-          } catch (error) {
-            if (formStatus) {
-              formStatus.textContent =
-                'Something went wrong. Please try again or email hello@baboostories.app.';
-              formStatus.classList.add('error');
-            }
-            console.error('Form submission failed:', error);
-          } finally {
-            if (submitButton) {
-              submitButton.disabled = false;
-              submitButton.textContent = defaultButtonText;
-            }
-          }
-        });
-      }
     </script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script type="module" src="assets/js/early-bird-form.js"></script>
   </body>
 </html>
