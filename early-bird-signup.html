@@ -51,17 +51,8 @@
             you've always wanted.
           </p>
 
-          <!-- Normal HTML POST form -->
-          <form
-            method="POST"
-            action="https://script.google.com/macros/s/AKfycb.../exec"
-            aria-describedby="privacy-note"
-          >
-            <input
-              type="hidden"
-              name="secret"
-              value="baboo-contact-20241006-cp2v3l8s"
-            />
+          <!-- AJAX-powered form -->
+          <form id="contact-form" aria-describedby="privacy-note">
 
             <div>
               <label for="name">Your name</label>
@@ -117,9 +108,15 @@
                 <option>Other</option>
               </select>
             </div>
-
             <button class="btn btn-primary" type="submit">Count me in</button>
           </form>
+
+          <p
+            id="form-status"
+            class="form-response"
+            role="status"
+            aria-live="polite"
+          ></p>
 
           <div class="trust-panel" id="privacy-note">
             <h3>Your trust matters</h3>
@@ -166,6 +163,75 @@
       const yearSpan = document.getElementById('year');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
+      }
+
+      const SCRIPT_URL =
+        'https://script.google.com/macros/s/AKfycb.../exec';
+      const SECRET_KEY = 'baboo-contact-20241006-cp2v3l8s';
+
+      const contactForm = document.getElementById('contact-form');
+      const formStatus = document.getElementById('form-status');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          if (!contactForm.reportValidity()) {
+            return;
+          }
+
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          const defaultButtonText = submitButton ? submitButton.textContent : '';
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+          }
+
+          if (formStatus) {
+            formStatus.textContent = 'Sending your details...';
+            formStatus.classList.remove('error', 'success');
+          }
+
+          const formData = new FormData(contactForm);
+          const payload = Object.fromEntries(formData.entries());
+          payload.secret = SECRET_KEY;
+          payload.userAgent = navigator.userAgent;
+
+          try {
+            const response = await fetch(SCRIPT_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+              throw new Error(result.message || 'Submission failed');
+            }
+
+            if (formStatus) {
+              formStatus.textContent =
+                "You're on the list! We'll be in touch soon.";
+              formStatus.classList.add('success');
+            }
+
+            contactForm.reset();
+          } catch (error) {
+            if (formStatus) {
+              formStatus.textContent =
+                'Something went wrong. Please try again or email hello@baboostories.app.';
+              formStatus.classList.add('error');
+            }
+            console.error('Form submission failed:', error);
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = defaultButtonText;
+            }
+          }
+        });
       }
     </script>
   </body>
