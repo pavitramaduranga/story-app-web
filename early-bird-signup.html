@@ -194,26 +194,18 @@
           }
 
           const formData = new FormData(contactForm);
-          formData.set('secret', SECRET_KEY);
-          formData.set('userAgent', navigator.userAgent || '');
-
-          const encodedPayload = new URLSearchParams();
-          formData.forEach((value, key) => {
-            encodedPayload.append(key, value == null ? '' : String(value));
-          });
+          const payload = Object.fromEntries(formData.entries());
+          payload.secret = SECRET_KEY;
+          payload.userAgent = navigator.userAgent;
 
           try {
             const response = await fetch(SCRIPT_URL, {
               method: 'POST',
-              body: encodedPayload,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
             });
 
-            let result = {};
-            try {
-              result = await response.json();
-            } catch (parseError) {
-              console.error('Failed to parse response JSON:', parseError);
-            }
+            const result = await response.json();
 
             if (!response.ok || !result.success) {
               throw new Error(result.message || 'Submission failed');
