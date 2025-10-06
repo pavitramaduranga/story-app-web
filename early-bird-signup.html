@@ -50,10 +50,16 @@
             you've always wanted.
           </p>
           <form
-            action="https://formspree.io/f/xbjnnqaa"
+            id="contactForm"
+            action="https://script.google.com/macros/s/AKfycb.../exec"
             method="POST"
             aria-describedby="privacy-note"
           >
+            <input
+              type="hidden"
+              name="secret"
+              value="baboo-contact-20241006-cp2v3l8s"
+            />
             <div>
               <label for="name">Your name</label>
               <input
@@ -106,6 +112,7 @@
             </div>
             <button class="btn btn-primary" type="submit">Count me in</button>
           </form>
+          <p class="form-response" id="form-response" role="status" aria-live="polite"></p>
           <div class="trust-panel" id="privacy-note">
             <h3>Your trust matters</h3>
             <p>
@@ -150,6 +157,51 @@
       const yearSpan = document.getElementById('year');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
+      }
+
+      const contactForm = document.getElementById('contactForm');
+      const responseEl = document.getElementById('form-response');
+
+      if (contactForm && responseEl) {
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const submitButton = contactForm.querySelector('[type="submit"]');
+          if (submitButton) {
+            submitButton.disabled = true;
+          }
+
+          responseEl.textContent = 'Sending your message…';
+          responseEl.classList.remove('error', 'success');
+
+          try {
+            const resp = await fetch(contactForm.action, {
+              method: 'POST',
+              body: new FormData(contactForm),
+              mode: 'cors',
+            });
+            const json = await resp.json().catch(() => ({}));
+
+            if (resp.ok && (json.ok !== false) && !json.error) {
+              responseEl.textContent = 'Thanks! Your message was sent.';
+              responseEl.classList.add('success');
+              contactForm.reset();
+            } else {
+              throw new Error(json.error || 'Unknown error');
+            }
+          } catch (error) {
+            const message =
+              error instanceof Error && error.message
+                ? error.message
+                : 'Unknown error';
+            responseEl.textContent = `Sorry, something went wrong: ${message}`;
+            responseEl.classList.add('error');
+          } finally {
+            if (submitButton) {
+              submitButton.disabled = false;
+            }
+          }
+        });
       }
     </script>
   </body>
