@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
+
   <body>
     <header>
       <nav class="navbar" aria-label="Primary">
@@ -49,10 +50,11 @@
             story samplers, and invitations to help us co-create the bedtime app
             you've always wanted.
           </p>
+
+          <!-- Normal HTML POST form -->
           <form
-            id="contactForm"
-            action="https://script.google.com/macros/s/AKfycb.../exec"
             method="POST"
+            action="https://script.google.com/macros/s/AKfycb.../exec"
             aria-describedby="privacy-note"
           >
             <input
@@ -60,6 +62,7 @@
               name="secret"
               value="baboo-contact-20241006-cp2v3l8s"
             />
+
             <div>
               <label for="name">Your name</label>
               <input
@@ -70,6 +73,7 @@
                 required
               />
             </div>
+
             <div>
               <label for="email">Email address</label>
               <input
@@ -81,16 +85,18 @@
                 required
               />
             </div>
+
             <div>
               <label for="children-ages">Children's ages</label>
               <input
                 type="text"
                 id="children-ages"
-                name="children_ages"
+                name="childrenAges"
                 placeholder="e.g. 4 and 7"
                 required
               />
             </div>
+
             <div>
               <label for="expectations">What do you expect from the app?</label>
               <textarea
@@ -99,9 +105,10 @@
                 placeholder="Tell us about your dream bedtime routine..."
               ></textarea>
             </div>
+
             <div>
               <label for="how-heard">How did you hear about Baboo Stories?</label>
-              <select id="how-heard" name="how_heard">
+              <select id="how-heard" name="referralSource">
                 <option value="">Select an option</option>
                 <option>Friend or family</option>
                 <option>Social media</option>
@@ -110,14 +117,15 @@
                 <option>Other</option>
               </select>
             </div>
+
             <button class="btn btn-primary" type="submit">Count me in</button>
           </form>
-          <p class="form-response" id="form-response" role="status" aria-live="polite"></p>
+
           <div class="trust-panel" id="privacy-note">
             <h3>Your trust matters</h3>
             <p>
               We only use your information to share app updates and invite you to
-              feedback sessions. No spam, no selling data—ever.
+              feedback sessions. No spam, no selling data — ever.
             </p>
             <p>
               Read the <a href="privacy-policy.html">full privacy policy</a> to
@@ -154,54 +162,10 @@
     </footer>
 
     <script>
+      // Keep only the year updater
       const yearSpan = document.getElementById('year');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
-      }
-
-      const contactForm = document.getElementById('contactForm');
-      const responseEl = document.getElementById('form-response');
-
-      if (contactForm && responseEl) {
-        contactForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-
-          const submitButton = contactForm.querySelector('[type="submit"]');
-          if (submitButton) {
-            submitButton.disabled = true;
-          }
-
-          responseEl.textContent = 'Sending your message…';
-          responseEl.classList.remove('error', 'success');
-
-          try {
-            const resp = await fetch(contactForm.action, {
-              method: 'POST',
-              body: new FormData(contactForm),
-              mode: 'cors',
-            });
-            const json = await resp.json().catch(() => ({}));
-
-            if (resp.ok && (json.ok !== false) && !json.error) {
-              responseEl.textContent = 'Thanks! Your message was sent.';
-              responseEl.classList.add('success');
-              contactForm.reset();
-            } else {
-              throw new Error(json.error || 'Unknown error');
-            }
-          } catch (error) {
-            const message =
-              error instanceof Error && error.message
-                ? error.message
-                : 'Unknown error';
-            responseEl.textContent = `Sorry, something went wrong: ${message}`;
-            responseEl.classList.add('error');
-          } finally {
-            if (submitButton) {
-              submitButton.disabled = false;
-            }
-          }
-        });
       }
     </script>
   </body>
