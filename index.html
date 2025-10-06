@@ -29,7 +29,15 @@
           />
           <span class="brand-name">Baboo Stories</span>
         </a>
-        <div class="nav-links">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <div class="nav-links" id="primary-navigation" data-visible="false">
           <a href="index.html">Home</a>
           <a href="app-links.html">Get the App</a>
           <a href="about-developer.html">About the Developer</a>
@@ -219,6 +227,7 @@
       <p class="footer-bottom">© <span id="year"></span> Baboo Stories. All rights reserved.</p>
     </footer>
 
+    <script src="assets/js/navigation.js"></script>
     <script>
       const yearSpan = document.getElementById('year');
       if (yearSpan) {
