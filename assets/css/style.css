@@ -90,6 +90,68 @@ header {
   color: var(--brand-dark);
 }
 
+.nav-toggle {
+  display: none;
+  background: white;
+  border: 1px solid rgba(31, 42, 68, 0.12);
+  border-radius: 999px;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--brand-dark);
+  box-shadow: 0 8px 20px rgba(31, 42, 68, 0.12);
+}
+
+.nav-toggle:hover,
+.nav-toggle:focus {
+  border-color: rgba(92, 106, 196, 0.35);
+  color: var(--brand-primary);
+  box-shadow: 0 12px 24px rgba(92, 106, 196, 0.18);
+}
+
+.nav-toggle-icon {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.nav-toggle-icon span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: var(--transition);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle-icon span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle-icon span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .nav-links a:hover,
 .nav-links a:focus {
   background-color: rgba(92, 106, 196, 0.12);
@@ -537,8 +599,39 @@ footer {
 }
 
 @media (max-width: 720px) {
+  .navbar {
+    position: relative;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .nav-links {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: clamp(1.25rem, 4vw, 2.5rem);
+    left: clamp(1.25rem, 4vw, 2.5rem);
+    padding: 1.25rem;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    border: 1px solid rgba(31, 42, 68, 0.08);
     display: none;
+  }
+
+  .nav-links[data-visible='true'] {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
   }
 
   header {
