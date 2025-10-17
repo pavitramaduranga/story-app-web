@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Read the latest Baboo Stories blog posts about mindful bedtime rituals, storytelling prompts, and product updates."
+    />
+    <title>Baboo Stories Blog | Tips for magical bedtime stories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="Primary">
+        <a class="brand" href="index.html">
+          <img
+            class="brand-logo"
+            src="assets/images/Kids-stories.png"
+            alt="Baboo Stories logo"
+            width="48"
+            height="48"
+          />
+          <span class="brand-name">Baboo Stories</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="nav-toggle-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <div class="nav-links" id="primary-navigation" data-visible="false">
+          <a href="index.html">Home</a>
+          <a href="app-links.html">Get the App</a>
+          <a href="about-developer.html">About the Developer</a>
+          <a href="blogs.html" aria-current="page">Blog</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="early-bird-signup.html">Early Bird Access</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="blog-title">
+        <div class="hero-card">
+          <span class="badge">Insights &amp; inspiration</span>
+          <h1 id="blog-title">Mindful storytelling tips for modern families</h1>
+          <p>
+            Welcome to the Baboo Stories blog—your go-to hub for nurturing bedtime rituals,
+            building empathy through stories, and getting behind-the-scenes peeks at our app.
+            Explore the latest articles below or dive straight into a story idea that catches your eye.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="early-bird-signup.html">Try Baboo Stories</a>
+            <a class="btn btn-secondary" href="#latest-posts">Browse articles</a>
+          </div>
+        </div>
+        <div class="info-panel" aria-label="Featured topics">
+          <h3>What we're writing about</h3>
+          <ul class="info-list">
+            <li>
+              <span class="highlight-icon" aria-hidden="true">🌙</span>
+              <div>
+                <strong>Bedtime rituals that stick</strong>
+                <p>Gentle routines and calming cues to help your little ones drift off happily.</p>
+              </div>
+            </li>
+            <li>
+              <span class="highlight-icon" aria-hidden="true">🎙️</span>
+              <div>
+                <strong>Storytelling prompts</strong>
+                <p>Creative ideas for weaving personal tales that celebrate your family's world.</p>
+              </div>
+            </li>
+            <li>
+              <span class="highlight-icon" aria-hidden="true">✨</span>
+              <div>
+                <strong>Product updates</strong>
+                <p>Get early looks at new Baboo Stories features and the inspiration behind them.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="latest-posts" aria-labelledby="latest-posts-title">
+        <h2 id="latest-posts-title">Latest articles</h2>
+        <p class="section-intro">
+          We publish thoughtful guides and reflections to help you make the most of every storytelling moment.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3><a href="blog-bedtime-rituals.html">5 calming bedtime rituals every parent can try tonight</a></h3>
+            <p>
+              Build a soothing nighttime routine with simple sensory cues, mindful questions, and storytime transitions.
+            </p>
+            <a class="btn btn-secondary" href="blog-bedtime-rituals.html">Read the guide</a>
+          </article>
+          <article class="card">
+            <h3><a href="blog-storytelling-prompts.html">Storytelling prompts to spark big feelings talks</a></h3>
+            <p>
+              Use Baboo Stories prompts to help your child express emotions and explore their imagination after each tale.
+            </p>
+            <a class="btn btn-secondary" href="blog-storytelling-prompts.html">Explore the prompts</a>
+          </article>
+          <article class="card">
+            <h3><a href="app-links.html">See what's new in the Baboo Stories app</a></h3>
+            <p>
+              Catch up on the latest app updates, download links, and community tips for sharing Baboo Stories with friends.
+            </p>
+            <a class="btn btn-secondary" href="app-links.html">Visit the app hub</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="newsletter-title">
+        <div class="hero-card" style="margin: 0 auto; max-width: 820px;">
+          <h2 id="newsletter-title">Get bedtime wisdom in your inbox</h2>
+          <p>
+            Join the early bird list to receive fresh blog articles, storytelling scripts, and exclusive behind-the-scenes updates.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="early-bird-signup.html">Sign up for updates</a>
+            <a class="btn btn-secondary" href="index.html">Discover Baboo Stories</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; <span id="current-year"></span> Baboo Stories. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/navigation.js"></script>
+    <script>
+      const currentYearElement = document.getElementById('current-year');
+      if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>
