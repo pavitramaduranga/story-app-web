@@ -345,6 +345,39 @@ main {
   color: rgba(43, 43, 43, 0.82);
 }
 
+.article-content {
+  display: grid;
+  gap: 1.75rem;
+  font-size: 1.05rem;
+  color: rgba(43, 43, 43, 0.92);
+}
+
+.article-content h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--brand-dark);
+}
+
+.article-content p {
+  margin: 0;
+}
+
+.article-content a {
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+.article-content a:hover,
+.article-content a:focus {
+  text-decoration: underline;
+}
+
+.meta {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .highlight-list {
   list-style: none;
   padding: 0;
