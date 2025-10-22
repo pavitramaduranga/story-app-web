@@ -59,7 +59,14 @@
             tap away.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-android" href="#android">Get it on Android</a>
+            <a
+              class="btn btn-android"
+              href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener"
+            >
+              Get it on Android
+            </a>
             <a class="btn btn-secondary" href="#ios">iPhone waitlist</a>
           </div>
         </div>
@@ -74,6 +81,14 @@
                   Use <code>baboostories.app/get</code> when inviting friends so
                   they always land on the right store.
                 </p>
+                <button
+                  class="copy-link-button"
+                  type="button"
+                  data-copy-value="https://baboostories.app/get"
+                >
+                  Copy link
+                </button>
+                <p class="copy-feedback" data-copy-feedback aria-live="polite"></p>
               </div>
             </li>
             <li>
@@ -196,6 +211,55 @@
       const yearSpan = document.getElementById('year');
       if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
+      }
+
+      const copyLinkButton = document.querySelector('.copy-link-button');
+      if (copyLinkButton) {
+        const copyValue = copyLinkButton.getAttribute('data-copy-value') || window.location.href;
+        const feedbackEl = copyLinkButton.parentElement?.querySelector('[data-copy-feedback]');
+        const defaultLabel = copyLinkButton.textContent.trim();
+
+        const setFeedback = (message, state) => {
+          if (!feedbackEl) return;
+          feedbackEl.textContent = message;
+          feedbackEl.classList.remove('is-success', 'is-error');
+          if (state) {
+            feedbackEl.classList.add(state);
+          }
+        };
+
+        const handleSuccess = () => {
+          copyLinkButton.classList.add('is-success');
+          copyLinkButton.textContent = 'Copied!';
+          setFeedback('Link copied! Share away.', 'is-success');
+
+          window.setTimeout(() => {
+            copyLinkButton.classList.remove('is-success');
+            copyLinkButton.textContent = defaultLabel;
+            setFeedback('', null);
+          }, 2500);
+        };
+
+        copyLinkButton.addEventListener('click', async () => {
+          try {
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(copyValue);
+            } else {
+              const tempInput = document.createElement('input');
+              tempInput.value = copyValue;
+              tempInput.setAttribute('aria-hidden', 'true');
+              tempInput.style.position = 'absolute';
+              tempInput.style.left = '-9999px';
+              document.body.appendChild(tempInput);
+              tempInput.select();
+              document.execCommand('copy');
+              document.body.removeChild(tempInput);
+            }
+            handleSuccess();
+          } catch (error) {
+            setFeedback('Copy not supported. Tap and hold the link to share.', 'is-error');
+          }
+        });
       }
     </script>
   </body>
