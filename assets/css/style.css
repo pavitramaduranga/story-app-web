@@ -221,6 +221,51 @@ main {
   transition: var(--transition);
 }
 
+.copy-link-button {
+  margin-top: 0.75rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 42, 68, 0.18);
+  background: white;
+  color: var(--brand-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.copy-link-button:hover,
+.copy-link-button:focus {
+  background: var(--brand-primary);
+  color: white;
+  border-color: transparent;
+}
+
+.copy-link-button:focus-visible {
+  outline: 3px solid rgba(49, 198, 212, 0.55);
+  outline-offset: 2px;
+}
+
+.copy-link-button.is-success {
+  background: var(--brand-secondary);
+  color: var(--brand-dark);
+  border-color: transparent;
+}
+
+.copy-feedback {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  color: rgba(31, 42, 68, 0.75);
+}
+
+.copy-feedback.is-success {
+  color: var(--brand-secondary);
+}
+
+.copy-feedback.is-error {
+  color: var(--accent-red, #d64550);
+}
+
 .btn-primary {
   background: white;
   color: var(--brand-primary);
