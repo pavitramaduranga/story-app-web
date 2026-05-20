@@ -179,9 +179,13 @@ main {
   box-shadow: var(--shadow-soft);
 }
 
+.home-banner picture,
 .home-banner img {
   display: block;
   width: 100%;
+}
+
+.home-banner img {
   height: auto;
 }
 

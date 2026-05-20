@@ -49,13 +49,22 @@
     </header>
 
     <main>
-      <section class="home-banner" aria-label="Baboo Stories collage banner">
-        <img
-          src="assets/images/cartoon_banner_collage_hd.png"
-          alt="Illustrated collage of Baboo Stories characters and story scenes"
-          width="1100"
-          height="420"
-        />
+      <section class="home-banner" aria-label="Baboo Stories bedtime app banner">
+        <picture>
+          <source
+            media="(max-width: 640px)"
+            srcset="assets/images/baboo-stories-bedtime-story-app-banner-mobile.webp"
+            width="1122"
+            height="1402"
+          />
+          <img
+            src="assets/images/baboo-stories-bedtime-story-app-banner-desktop.webp"
+            alt="Baboo Stories bedtime story app banner showing a family reading magical stories together"
+            width="1672"
+            height="941"
+            fetchpriority="high"
+          />
+        </picture>
       </section>
 
       <section class="hero" aria-labelledby="hero-title">
