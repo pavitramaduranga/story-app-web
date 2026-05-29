@@ -12,6 +12,7 @@
   --shadow-soft: 0 20px 40px rgba(31, 42, 68, 0.15);
   --shadow-card: 0 15px 30px rgba(92, 106, 196, 0.15);
   --max-width: min(1400px, 96vw);
+  --home-feature-width: min(1200px, 100%);
   --transition: all 0.25s ease;
 }
 
@@ -163,7 +164,7 @@ main {
 }
 
 .hero {
-  max-width: var(--max-width);
+  max-width: var(--home-feature-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -172,7 +173,7 @@ main {
 }
 
 .home-banner {
-  max-width: var(--max-width);
+  max-width: var(--home-feature-width);
   margin: 0 auto clamp(2rem, 4vw, 2.75rem);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -187,14 +188,6 @@ main {
 
 .home-banner img {
   height: auto;
-}
-
-@media (min-width: 721px) {
-  .home-banner img {
-    height: clamp(440px, 44vw, 560px);
-    object-fit: cover;
-    object-position: center;
-  }
 }
 
 .hero-card {
