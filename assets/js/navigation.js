@@ -1,5 +1,5 @@
 (function () {
-  const GA_MEASUREMENT_ID = 'G-2EPC3F3Z6X';
+  const GA_MEASUREMENT_ID = 'G-YS5KX79KBQ';
 
   function initializeNavigation(navToggle) {
     const navBar = navToggle.closest('nav');
