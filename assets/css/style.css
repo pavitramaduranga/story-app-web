@@ -548,6 +548,30 @@ article > .hero-card {
   text-decoration: underline;
 }
 
+.article-image {
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--bg-light);
+}
+
+.article-image-wide {
+  max-width: var(--home-feature-width);
+  margin: 0 auto 2.5rem;
+}
+
+.article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-image-in-card {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 18px 35px rgba(31, 42, 68, 0.18);
+}
+
 .meta {
   margin-top: 0.75rem;
   font-size: 0.95rem;
