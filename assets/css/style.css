@@ -465,6 +465,62 @@ article > .hero-card {
   color: rgba(43, 43, 43, 0.82);
 }
 
+.audience-section {
+  background: var(--bg-light);
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: var(--radius-md);
+  padding: clamp(2rem, 5vw, 3rem);
+}
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.keyword-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(92, 106, 196, 0.18);
+  border-radius: 999px;
+  background: white;
+  color: var(--brand-primary);
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(31, 42, 68, 0.08);
+}
+
+.keyword-list a:hover,
+.keyword-list a:focus {
+  color: white;
+  background: var(--brand-primary);
+}
+
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-list details {
+  background: white;
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 1.25rem 1.5rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  color: var(--brand-dark);
+  font-weight: 700;
+}
+
+.faq-list p {
+  margin: 0.85rem 0 0;
+  color: rgba(43, 43, 43, 0.82);
+}
+
 .article-content {
   display: grid;
   gap: 1.75rem;
