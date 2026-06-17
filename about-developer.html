@@ -70,7 +70,7 @@
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="about-title">
+      <section class="hero about-hero" aria-labelledby="about-title">
         <div class="hero-card">
           <span class="badge">Hi, I'm Pavitra De Silva</span>
           <h1 id="about-title">Bedtime stories built by a fellow parent</h1>
@@ -102,7 +102,17 @@
             >
           </div>
         </div>
-        <div class="info-panel">
+        <div class="info-panel quick-facts-panel">
+          <figure class="quick-facts-portrait">
+            <img
+              src="assets/images/about-us.png"
+              alt="Cartoon-style illustration of Pavitra reading with his child"
+              width="720"
+              height="720"
+              loading="eager"
+              onerror="this.closest('.quick-facts-portrait').classList.add('quick-facts-portrait--missing')"
+            />
+          </figure>
           <h3>Quick facts</h3>
           <ul class="info-list">
             <li>
@@ -140,10 +150,18 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="origin-title">
-        <h2 id="origin-title">The parent story behind Baboo Stories</h2>
-        <article class="card">
-          <p>Hi there! I'm a solo app developer—and more importantly, a parent.</p>
+      <section class="section founder-story-section" aria-labelledby="origin-title">
+        <div class="section-heading-row">
+          <div>
+            <span class="eyebrow">A personal note</span>
+            <h2 id="origin-title">The parent story behind Baboo Stories</h2>
+          </div>
+          <p class="section-intro">
+            Before Baboo Stories became an app, it started as a parent trying to make bedtime feel calmer, closer, and more memorable.
+          </p>
+        </div>
+        <article class="card founder-note">
+          <p class="lead-note">Hi there! I'm a solo app developer—and more importantly, a parent.</p>
           <p>
             Like many moms and dads, I love reading stories to my child. But I
             quickly realized that finding high-quality, age-appropriate stories
@@ -172,6 +190,14 @@
           </p>
           <p><em>Enjoy Baboo Stories!</em></p>
           <p><strong>— Pavitra De Silva</strong></p>
+          <div class="founder-note-callout">
+            <strong>Why this matters to me</strong>
+            <p>
+              Baboo Stories is not a faceless story library. It is being shaped
+              around the same quiet, sometimes messy, always meaningful bedtime
+              moments I share with my own child.
+            </p>
+          </div>
         </article>
       </section>
 
