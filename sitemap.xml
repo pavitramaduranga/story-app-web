@@ -25,13 +25,25 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://baboostories.com/blog-bedtime-stories-for-3-year-olds.html</loc>
+    <loc
+      >https://baboostories.com/blog/toddler-wont-sleep-bedtime-story-routine/</loc
+    >
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://baboostories.com/blog-10-minute-toddler-bedtime-routine.html</loc>
+    <loc
+      >https://baboostories.com/blog-bedtime-stories-for-3-year-olds.html</loc
+    >
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc
+      >https://baboostories.com/blog-10-minute-toddler-bedtime-routine.html</loc
+    >
     <lastmod>2026-06-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
