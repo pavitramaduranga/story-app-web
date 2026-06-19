@@ -12,6 +12,8 @@ import {
 
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
+const signupShare = document.getElementById('signup-share');
+const shareSignupButton = document.getElementById('share-signup');
 
 if (!contactForm) {
   console.warn('Contact form not found on the page.');
@@ -19,6 +21,37 @@ if (!contactForm) {
 
 const firebaseConfig = window.firebaseConfig;
 let db = null;
+
+const shareData = {
+  title: 'Baboo Stories early access',
+  text: 'Join the Baboo Stories early bird list for launch updates and exclusive story samplers.',
+  url: 'https://baboostories.com/early-bird-signup.html',
+};
+
+const shareByEmail = () => {
+  const subject = encodeURIComponent(shareData.title);
+  const body = encodeURIComponent(`${shareData.text} ${shareData.url}`);
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+};
+
+if (shareSignupButton) {
+  shareSignupButton.addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          return;
+        }
+
+        console.warn('Native sharing failed, falling back to email:', error);
+      }
+    }
+
+    shareByEmail();
+  });
+}
 
 if (!firebaseConfig || !firebaseConfig.apiKey) {
   console.warn(
@@ -66,6 +99,10 @@ if (contactForm && db) {
       formStatus.classList.remove('error', 'success');
     }
 
+    if (signupShare) {
+      signupShare.hidden = true;
+    }
+
     const formData = new FormData(contactForm);
     const payload = {
       name: (formData.get('name') || '').toString().trim(),
@@ -83,6 +120,10 @@ if (contactForm && db) {
       if (formStatus) {
         formStatus.textContent = "You're on the list! We'll be in touch soon.";
         formStatus.classList.add('success');
+      }
+
+      if (signupShare) {
+        signupShare.hidden = false;
       }
 
       contactForm.reset();

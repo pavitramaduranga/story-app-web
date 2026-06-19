@@ -829,6 +829,55 @@ form {
   color: #c0362c;
 }
 
+.signup-share {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  margin: 1.15rem auto 0;
+  padding: 1.25rem;
+  border: 1px solid rgba(92, 106, 196, 0.34);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    rgba(92, 106, 196, 0.13),
+    rgba(255, 191, 65, 0.16)
+  );
+  box-shadow: 0 18px 44px rgba(92, 106, 196, 0.14);
+  text-align: center;
+}
+
+.signup-share[hidden] {
+  display: none;
+}
+
+.signup-share p {
+  margin: 0;
+  max-width: 32rem;
+  color: var(--brand-dark);
+  font-weight: 600;
+}
+
+.signup-share .signup-share-kicker {
+  color: var(--brand-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form-card .signup-share .btn-secondary {
+  margin-top: 0.2rem;
+  background: var(--brand-primary);
+  color: white;
+  border: 1px solid var(--brand-primary);
+  box-shadow: 0 12px 28px rgba(92, 106, 196, 0.24);
+}
+
+.form-card .signup-share .btn-secondary:hover,
+.form-card .signup-share .btn-secondary:focus {
+  background: #4d58b3;
+  transform: translateY(-2px);
+}
+
 label {
   display: block;
   font-weight: 600;
