@@ -733,7 +733,14 @@ article.section > p:first-child .btn-secondary:focus {
 
 .info-panel h3 {
   margin-top: 0;
+  margin-bottom: 0.75rem;
   color: var(--brand-primary);
+}
+
+.positioning-note {
+  margin: 0 0 1.25rem;
+  color: rgba(31, 42, 68, 0.78);
+  font-weight: 600;
 }
 
 .info-list {
