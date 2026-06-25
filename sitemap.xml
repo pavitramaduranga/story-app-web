@@ -20,8 +20,16 @@
   </url>
   <url>
     <loc>https://baboostories.com/blogs.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc
+      >https://baboostories.com/blog/stages-of-helping-your-child-adapt-to-story-time/</loc
+    >
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
