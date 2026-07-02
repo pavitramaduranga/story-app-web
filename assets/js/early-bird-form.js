@@ -132,7 +132,7 @@ if (contactForm && db) {
 
       if (formStatus) {
         formStatus.textContent =
-          'Something went wrong. Please try again or email hello@baboostories.app.';
+          'Something went wrong. Please try again or email hello@baboostories.com.';
         formStatus.classList.add('error');
       }
     } finally {
