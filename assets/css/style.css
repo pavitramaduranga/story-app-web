@@ -970,6 +970,20 @@ footer {
   color: white;
 }
 
+.footer-links .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+}
+
+.social-link svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
 .footer-bottom {
   margin-top: 2rem;
   text-align: center;
