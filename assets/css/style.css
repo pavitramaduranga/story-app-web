@@ -987,6 +987,15 @@ footer {
   padding: 2.5rem clamp(1.5rem, 4vw, 2.5rem);
 }
 
+footer a {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+footer a:hover,
+footer a:focus {
+  color: white;
+}
+
 .footer-content {
   max-width: var(--max-width);
   margin: 0 auto;
