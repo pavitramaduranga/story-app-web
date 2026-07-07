@@ -10,13 +10,11 @@ import {
   serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js';
 
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-const signupShare = document.getElementById('signup-share');
+const signupForms = document.querySelectorAll('[data-early-bird-form]');
 const shareSignupButton = document.getElementById('share-signup');
 
-if (!contactForm) {
-  console.warn('Contact form not found on the page.');
+if (!signupForms.length) {
+  console.warn('Early bird signup form not found on the page.');
 }
 
 const firebaseConfig = window.firebaseConfig;
@@ -58,11 +56,15 @@ if (!firebaseConfig || !firebaseConfig.apiKey) {
     'Firebase configuration is missing. Update assets/js/firebase-config.js with your project credentials.'
   );
 
-  if (formStatus) {
-    formStatus.textContent =
-      'The signup form is not connected yet. Please check back soon.';
-    formStatus.classList.add('error');
-  }
+  signupForms.forEach((form) => {
+    const formStatus = document.getElementById(form.dataset.statusTarget);
+
+    if (formStatus) {
+      formStatus.textContent =
+        'The signup form is not connected yet. Please check back soon.';
+      formStatus.classList.add('error');
+    }
+  });
 } else {
   try {
     const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
@@ -70,23 +72,44 @@ if (!firebaseConfig || !firebaseConfig.apiKey) {
   } catch (error) {
     console.error('Unable to initialise Firebase:', error);
 
-    if (formStatus) {
-      formStatus.textContent =
-        'We had trouble starting our database. Please try again later.';
-      formStatus.classList.add('error');
-    }
+    signupForms.forEach((form) => {
+      const formStatus = document.getElementById(form.dataset.statusTarget);
+
+      if (formStatus) {
+        formStatus.textContent =
+          'We had trouble starting our database. Please try again later.';
+        formStatus.classList.add('error');
+      }
+    });
   }
 }
 
-if (contactForm && db) {
-  contactForm.addEventListener('submit', async (event) => {
+signupForms.forEach((form) => {
+  const formStatus = document.getElementById(form.dataset.statusTarget);
+  const signupShare = document.getElementById(form.dataset.shareTarget);
+
+  if (!db) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (formStatus) {
+        formStatus.textContent =
+          'We are getting things ready. Please try again soon.';
+        formStatus.classList.add('error');
+      }
+    });
+
+    return;
+  }
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    if (!contactForm.reportValidity()) {
+    if (!form.reportValidity()) {
       return;
     }
 
-    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const submitButton = form.querySelector('button[type="submit"]');
     const defaultButtonText = submitButton ? submitButton.textContent : '';
 
     if (submitButton) {
@@ -103,7 +126,7 @@ if (contactForm && db) {
       signupShare.hidden = true;
     }
 
-    const formData = new FormData(contactForm);
+    const formData = new FormData(form);
     const payload = {
       name: (formData.get('name') || '').toString().trim(),
       email: (formData.get('email') || '').toString().trim(),
@@ -126,7 +149,7 @@ if (contactForm && db) {
         signupShare.hidden = false;
       }
 
-      contactForm.reset();
+      form.reset();
     } catch (error) {
       console.error('Firestore submission failed:', error);
 
@@ -142,14 +165,4 @@ if (contactForm && db) {
       }
     }
   });
-} else if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    if (formStatus) {
-      formStatus.textContent =
-        'We are getting things ready. Please try again soon.';
-      formStatus.classList.add('error');
-    }
-  });
-}
+});

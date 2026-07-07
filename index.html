@@ -176,23 +176,21 @@
             </svg>
             Trusted bedtime storytelling</span
           >
-          <h1 id="hero-title">A calming bedtime story app for kids and parents</h1>
+          <h1 id="hero-title">Gentle kids stories for parents to read, imagine, and connect.</h1>
           <p>
-            Baboo Stories helps busy parents turn bedtime into an easier
-            read-aloud routine with gentle kids stories, mindful conversation
-            prompts, and screen-light story sessions for toddlers and young
-            children.
+            Join the Baboo Stories early list and get launch updates, story
+            previews, and a first peek at the app.
           </p>
           <div class="hero-actions">
+            <a class="btn btn-primary" href="early-bird-signup.html"
+              >Join Early Bird Access</a
+            >
             <a
               class="btn btn-android"
               href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
               target="_blank"
               rel="noopener"
               >Get it on Google Play</a
-            >
-            <a class="btn btn-primary" href="early-bird-signup.html"
-              >Join the Parent List</a
             >
             <a class="btn btn-preview" href="app-links.html">Preview the App</a>
           </div>
@@ -298,6 +296,72 @@
           >
           <a href="app-links.html">Android bedtime story app</a>
           <a href="early-bird-signup.html">Parent beta list</a>
+        </div>
+      </section>
+
+      <section class="section early-bird-section" aria-labelledby="home-signup-title">
+        <div class="early-bird-copy">
+          <span class="eyebrow">Be one of the first Baboo families</span>
+          <h2 id="home-signup-title">Join the Baboo Stories Early Bird List</h2>
+          <p>
+            Baboo Stories is being created for parents who want gentle kids
+            stories they can read aloud, act out, and enjoy together, not just
+            another autoplay story app.
+          </p>
+          <p>
+            Sign up to receive launch updates, exclusive story previews, and
+            early invitations to help shape the app.
+          </p>
+        </div>
+        <div class="early-bird-form-card">
+          <form
+            id="home-early-bird-form"
+            data-early-bird-form
+            data-status-target="home-form-status"
+            aria-describedby="home-privacy-note"
+          >
+            <div>
+              <label for="home-name">Your name</label>
+              <input
+                type="text"
+                id="home-name"
+                name="name"
+                placeholder="Megan Carter"
+                required
+              />
+            </div>
+            <div>
+              <label for="home-email">Email address</label>
+              <input
+                type="email"
+                id="home-email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <div>
+              <label for="home-children-ages">Children's ages</label>
+              <input
+                type="text"
+                id="home-children-ages"
+                name="childrenAges"
+                placeholder="e.g. 3 and 5"
+              />
+            </div>
+            <button class="btn btn-primary" type="submit">Join Early Bird Access</button>
+          </form>
+          <p
+            id="home-form-status"
+            class="form-response"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <p id="home-privacy-note" class="form-note">
+            No spam. Just launch updates, story samples, and useful
+            parent-friendly ideas.
+          </p>
         </div>
       </section>
 
@@ -423,14 +487,14 @@
 
       <section class="section" aria-labelledby="cta-title">
         <div class="hero-card cta-card">
-          <h2 id="cta-title">Become part of our founding family</h2>
+          <h2 id="cta-title">Ready to bring gentler stories into your child's day?</h2>
           <p>
-            Be the first to access new stories, help shape the app with your
-            feedback, and receive exclusive bedtime ritual guides.
+            Join the Early Bird list for story samples, launch news, and the
+            first invitations to help shape Baboo Stories.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="early-bird-signup.html"
-              >Reserve your spot</a
+              >Join the Early Bird list</a
             >
             <a class="btn btn-secondary" href="about-developer.html"
               >Meet the creator</a
@@ -493,5 +557,7 @@
         yearSpan.textContent = new Date().getFullYear();
       }
     </script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script type="module" src="assets/js/early-bird-form.js"></script>
   </body>
 </html>
