@@ -20,9 +20,17 @@
   </url>
   <url>
     <loc>https://baboostories.com/blogs.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc
+      >https://baboostories.com/blog/can-babies-hear-stories-in-the-womb/</loc
+    >
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc

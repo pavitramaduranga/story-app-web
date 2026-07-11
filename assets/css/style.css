@@ -626,6 +626,12 @@ article.section > p:first-child .btn-secondary:focus {
   color: var(--brand-dark);
 }
 
+.article-content h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  color: var(--brand-dark);
+}
+
 .article-content p {
   margin: 0;
 }
@@ -697,6 +703,117 @@ article.section > p:first-child .btn-secondary:focus {
 .article-image-in-card {
   margin-bottom: 1.5rem;
   box-shadow: 0 18px 35px rgba(31, 42, 68, 0.18);
+}
+
+.article-callout {
+  border: 1px solid rgba(49, 198, 212, 0.24);
+  border-left: 6px solid var(--brand-accent);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    rgba(49, 198, 212, 0.1),
+    rgba(247, 183, 51, 0.1)
+  );
+  box-shadow: var(--shadow-card);
+  padding: 1.25rem 1.35rem;
+}
+
+.article-callout strong {
+  display: block;
+  color: var(--brand-dark);
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.article-callout-soft {
+  border-color: rgba(247, 183, 51, 0.32);
+  border-left-color: var(--brand-secondary);
+  background: rgba(247, 183, 51, 0.12);
+}
+
+.pregnancy-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.timeline-step {
+  position: relative;
+  background: white;
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 1.2rem;
+}
+
+.timeline-step::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--brand-secondary);
+  margin-bottom: 0.85rem;
+}
+
+.timeline-step span {
+  display: inline-block;
+  color: var(--brand-primary);
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 0.45rem;
+}
+
+.timeline-step strong {
+  display: block;
+  color: var(--brand-dark);
+  margin-bottom: 0.45rem;
+}
+
+.timeline-step p {
+  font-size: 0.95rem;
+  color: rgba(43, 43, 43, 0.78);
+}
+
+.habit-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.habit-flow div {
+  position: relative;
+  min-height: 76px;
+  border-radius: var(--radius-md);
+  background: var(--brand-dark);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(31, 42, 68, 0.16);
+}
+
+.habit-flow div:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -0.68rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: var(--brand-primary);
+  background: white;
+  border: 1px solid rgba(92, 106, 196, 0.2);
+  border-radius: 999px;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
 }
 
 .meta {
@@ -1102,6 +1219,20 @@ footer a:focus {
 
   .testimonial {
     min-height: 300px;
+  }
+
+  .pregnancy-timeline,
+  .habit-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-flow div:not(:last-child)::after {
+    content: "↓";
+    right: auto;
+    top: auto;
+    bottom: -0.72rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
