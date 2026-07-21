@@ -20,9 +20,17 @@
   </url>
   <url>
     <loc>https://baboostories.com/blogs.html</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-07-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc
+      >https://baboostories.com/blog/how-to-make-toddlers-love-story-time/</loc
+    >
+    <lastmod>2026-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://baboostories.com/blog/story-role-play-for-kids/</loc>
@@ -57,6 +65,14 @@
       >https://baboostories.com/blog/parent-led-storytelling-vs-auto-play-story-apps/</loc
     >
     <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc
+      >https://baboostories.com/blog/toddler-screen-time-before-bed/</loc
+    >
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
