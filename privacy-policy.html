@@ -73,7 +73,7 @@
       <section class="section" aria-labelledby="policy-title">
         <article class="policy">
           <h1 id="policy-title">Privacy Policy</h1>
-          <p><strong>Effective date:</strong> March 5, 2024</p>
+          <p><strong>Effective date:</strong> July 21, 2026</p>
           <p>
             Baboo Stories (“we”, “us”, or “our”) is committed to protecting your
             privacy. This Privacy Policy explains how we collect, use, and share
@@ -85,21 +85,40 @@
           <p>We collect the following types of information:</p>
           <ul>
             <li>
-              <strong>Account details:</strong> Parent name, email address, and
-              household preferences you share when creating an account or
-              joining our waitlist.
+              <strong>Anonymous authentication identifier:</strong> Firebase
+              Authentication may create an anonymous identifier used to unlock
+              premium stories and authorize protected API requests.
             </li>
             <li>
-              <strong>Child profile insights:</strong> Optional details such as
-              age range or interests that help personalise story suggestions.
+              <strong>Generated installation ID:</strong> The app creates a
+              device or installation ID, stores it locally, and sends it to the
+              Baboo Stories backend.
             </li>
             <li>
-              <strong>Usage data:</strong> Interactions with stories, prompts,
-              and app features so we can improve content relevance.
+              <strong>Device and app metadata:</strong> Platform, operating
+              system version, app version, timestamp, and
+              connectivity-dependent registration status.
             </li>
             <li>
-              <strong>Device information:</strong> Device type, operating
-              system, and app version for analytics and troubleshooting.
+              <strong>Usage analytics:</strong> Screen views, story and
+              category interactions, share taps, feedback submission attempts,
+              feedback submission success or failure, and basic diagnostic
+              events.
+            </li>
+            <li>
+              <strong>Feedback:</strong> Feedback text entered by the user,
+              plus timestamp and backend metadata needed to process the
+              submission.
+            </li>
+            <li>
+              <strong>Purchase and subscription data:</strong> Google Play
+              product ID, package name, purchase token, purchase status, and
+              entitlement state.
+            </li>
+            <li>
+              <strong>Story and category API request data:</strong> Information
+              required to deliver app content through the Baboo Stories
+              backend.
             </li>
           </ul>
 
@@ -107,29 +126,31 @@
           <p>We use the data we collect to:</p>
           <ul>
             <li>Provide, maintain, and enhance the Baboo Stories experience.</li>
-            <li>Personalise story recommendations and bedtime prompts.</li>
-            <li>Communicate with you about updates, tips, and community news.</li>
+            <li>Deliver stories, categories, and premium app features.</li>
+            <li>Verify subscriptions and maintain premium access.</li>
             <li>Respond to feedback and provide customer support.</li>
             <li>Monitor usage patterns to keep the app reliable and secure.</li>
+            <li>Understand app performance and improve reliability.</li>
           </ul>
 
           <h2 id="childrens-privacy">3. Children’s privacy</h2>
           <p>
-            Baboo Stories is designed with families in mind, and children may
-            interact with the app alongside their caregivers. We do not
-            knowingly collect personal information from children under the age
-            of 13. If we become aware that we have unintentionally collected
-            such information, we will delete it promptly.
+            Baboo Stories is intended for parent-led family reading. The
+            current app implementation does not require children to create
+            accounts, and we do not knowingly collect personal information from
+            children under the age of 13. Parents should not submit a child’s
+            personal information through the feedback feature. If we become
+            aware that we have unintentionally collected personal information
+            from a child under 13, we will delete it promptly.
           </p>
 
           <h2 id="firebase-services">4. Use of Firebase services</h2>
           <p>
-            We use Firebase, a service provided by Google, to support essential
-            app functionality such as analytics and performance monitoring.
-            Firebase may collect non-personal technical data—for example, app
-            crashes or general usage patterns—to help us understand how the app
-            performs. This information is processed in an anonymized way and is
-            not used to identify individual users.
+            We use Firebase and Google Cloud services to support essential app
+            functionality, including anonymous authentication, analytics, and
+            Firebase Cloud Functions used by the Baboo Stories backend.
+            Firebase may process app instance identifiers, device information,
+            and usage events according to Google’s policies.
           </p>
           <p>
             You can learn more about Firebase and Google’s data practices by
@@ -142,35 +163,74 @@
             >.
           </p>
 
-          <h2 id="advertising">5. Advertising (AdMob)</h2>
+          <h2 id="subscriptions">5. Subscriptions and purchases</h2>
           <p>
-            The app may display advertisements through Google AdMob. AdMob may
-            collect non-personal information—such as device type, language
-            preferences, and general app usage data—to deliver relevant ads.
-          </p>
-          <p>
-            Additional details about how Google uses information from apps are
-            available at
-            <a
-              href="https://policies.google.com/technologies/partner-sites"
-              rel="noopener noreferrer"
-              target="_blank"
-              >https://policies.google.com/technologies/partner-sites</a
-            >.
+            Payments are processed by Google Play. Baboo Stories does not
+            receive your full payment card details. The app sends purchase
+            tokens and related subscription information to the Baboo Stories
+            backend to verify purchases, determine purchase status, and
+            maintain premium access.
           </p>
 
-          <h2 id="data-sharing">6. Data sharing</h2>
+          <h2 id="local-storage">6. Local device storage</h2>
+          <p>
+            The app stores a generated installation ID and registration metadata
+            in local device storage using shared preferences. This helps keep
+            the app working reliably and avoids duplicate registration calls.
+          </p>
+
+          <h2 id="service-providers">7. Service providers</h2>
           <p>
             We do not sell, rent, or trade personal information. We may share
-            limited details with trusted service providers, such as analytics or
-            cloud hosting partners, so they can perform services on our behalf.
-            These partners are obligated to safeguard your information and use
-            it only for the services they provide to us. We may also share
-            aggregated or anonymized insights that do not identify individual
-            users.
+            limited information with trusted service providers so they can
+            perform services on our behalf, including:
+          </p>
+          <ul>
+            <li>
+              <strong>Google Firebase and Google Cloud:</strong> App backend,
+              anonymous authentication, analytics, and Cloud Functions.
+            </li>
+            <li>
+              <strong>Google Play Billing:</strong> Subscription purchase
+              processing and verification.
+            </li>
+            <li>
+              <strong>Device share sheet and share_plus:</strong> Used only
+              when you choose to share an invite link.
+            </li>
+            <li>
+              <strong>Cached network image and content hosting:</strong> Used
+              when images or content are served remotely by our backend or
+              storage providers.
+            </li>
+          </ul>
+          <p>
+            These providers are expected to safeguard information and use it
+            only for the services they provide to us.
           </p>
 
-          <h2 id="future-updates">7. Future updates</h2>
+          <h2 id="retention-deletion">8. Retention and deletion</h2>
+          <p>
+            We retain information only as long as needed to provide the app,
+            maintain subscriptions, improve reliability, comply with legal
+            obligations, and resolve disputes. Feedback, analytics, device
+            registration records, and subscription entitlement records may be
+            kept while they are needed for those purposes. You may contact us to
+            request deletion of personal information associated with your use of
+            Baboo Stories.
+          </p>
+
+          <h2 id="permissions">9. No advertising platforms or sensitive permissions</h2>
+          <p>
+            Baboo Stories does not run an advertising platform in the current
+            app, and we do not use an ad network such as Google AdMob. The
+            current app does not request location, camera, microphone,
+            contacts, or advertising ID permissions. The app does require
+            internet access to deliver content, authenticate requests, submit
+            feedback, and verify subscriptions.
+          </p>
+
+          <h2 id="future-updates">10. Future updates</h2>
           <p>
             As we expand Baboo Stories, we may introduce new features that
             require additional information. Any updates to our data practices
@@ -178,7 +238,7 @@
             this page regularly to stay informed.
           </p>
 
-          <h2 id="contact">8. Contact us</h2>
+          <h2 id="contact">11. Contact us</h2>
           <p>
             If you have any questions or concerns about this Privacy Policy,
             please email us at
