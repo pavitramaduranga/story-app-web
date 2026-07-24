@@ -22,7 +22,7 @@ let db = null;
 
 const shareData = {
   title: 'Baboo Stories early access',
-  text: 'Join the Baboo Stories early bird list for launch updates and exclusive story samplers.',
+  text: 'Join the Baboo Stories early bird list for free story packs, app updates, and iPhone news.',
   url: 'https://baboostories.com/early-bird-signup.html',
 };
 
