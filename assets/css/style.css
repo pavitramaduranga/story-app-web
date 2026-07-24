@@ -291,6 +291,11 @@ article > .hero-card {
   gap: 0.85rem;
 }
 
+.hero-card .hero-reassurance {
+  margin: 0.8rem 0 0;
+  font-size: 0.95rem;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
