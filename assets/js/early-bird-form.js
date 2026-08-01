@@ -9,6 +9,7 @@ import {
   addDoc,
   serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js';
+import { trackEvent } from './analytics.js';
 
 const signupForms = document.querySelectorAll('[data-early-bird-form]');
 const shareSignupButton = document.getElementById('share-signup');
@@ -139,6 +140,9 @@ signupForms.forEach((form) => {
 
     try {
       await addDoc(collection(db, 'earlyBirdSignups'), payload);
+      trackEvent('early_bird_signup', {
+        method: 'website_form',
+      });
 
       if (formStatus) {
         formStatus.textContent = "You're on the list! We'll be in touch soon.";
