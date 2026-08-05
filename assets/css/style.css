@@ -692,9 +692,13 @@ article.section > p:first-child .btn-secondary:focus {
   margin: 0 auto 2.5rem;
 }
 
+.article-image picture,
 .article-image img {
   display: block;
   width: 100%;
+}
+
+.article-image img {
   height: auto;
 }
 
