@@ -73,7 +73,7 @@
       <section class="section" aria-labelledby="policy-title">
         <article class="policy">
           <h1 id="policy-title">Privacy Policy</h1>
-          <p><strong>Effective date:</strong> July 21, 2026</p>
+          <p><strong>Effective date:</strong> August 16, 2026</p>
           <p>
             Baboo Stories (“we”, “us”, or “our”) is committed to protecting your
             privacy. This Privacy Policy explains how we collect, use, and share
@@ -85,14 +85,16 @@
           <p>We collect the following types of information:</p>
           <ul>
             <li>
-              <strong>Anonymous authentication identifier:</strong> Firebase
-              Authentication may create an anonymous identifier used to unlock
-              premium stories and authorize protected API requests.
+              <strong>App account and authentication identifiers:</strong>
+              Firebase Authentication may create an app-scoped identifier
+              used to unlock premium stories, authorize protected API requests,
+              and connect app activity with subscription access.
             </li>
             <li>
-              <strong>Generated installation ID:</strong> The app creates a
-              device or installation ID, stores it locally, and sends it to the
-              Baboo Stories backend.
+              <strong>Identifiers:</strong> The app may create or receive a
+              device, installation, app instance, or transaction-related
+              identifier. These identifiers may be stored locally and sent to
+              the Baboo Stories backend.
             </li>
             <li>
               <strong>Device and app metadata:</strong> Platform, operating
@@ -100,20 +102,27 @@
               connectivity-dependent registration status.
             </li>
             <li>
-              <strong>Usage analytics:</strong> Screen views, story and
-              category interactions, share taps, feedback submission attempts,
-              feedback submission success or failure, and basic diagnostic
-              events.
+              <strong>Usage data:</strong> Product interaction information such
+              as screen views, story and category interactions, share taps,
+              feedback submission attempts, and feedback submission success or
+              failure.
             </li>
             <li>
-              <strong>Feedback:</strong> Feedback text entered by the user,
-              plus timestamp and backend metadata needed to process the
-              submission.
+              <strong>Diagnostics:</strong> Other diagnostic data, including
+              app events and technical information that help us understand
+              reliability, errors, and performance.
             </li>
             <li>
-              <strong>Purchase and subscription data:</strong> Google Play
-              product ID, package name, purchase token, purchase status, and
-              entitlement state.
+              <strong>User content:</strong> Feedback or customer support text
+              entered by the user, plus timestamp and backend metadata needed
+              to process the submission.
+            </li>
+            <li>
+              <strong>Purchase and subscription data:</strong> Purchase
+              history and subscription information from Apple App Store or
+              Google Play, such as product ID, transaction or order
+              identifiers, purchase token or receipt information, purchase
+              status, entitlement status, and renewal or expiry state.
             </li>
             <li>
               <strong>Story and category API request data:</strong> Information
@@ -147,10 +156,13 @@
           <h2 id="firebase-services">4. Use of Firebase services</h2>
           <p>
             We use Firebase and Google Cloud services to support essential app
-            functionality, including anonymous authentication, analytics, and
+            functionality, including app authentication, analytics, and
             Firebase Cloud Functions used by the Baboo Stories backend.
             Firebase may process app instance identifiers, device information,
-            and usage events according to Google’s policies.
+            and usage events according to Google’s policies. Some of this
+            information may be linked to your app use so we can provide
+            support, protect the service, measure product interaction, diagnose
+            issues, and maintain premium access.
           </p>
           <p>
             You can learn more about Firebase and Google’s data practices by
@@ -165,11 +177,17 @@
 
           <h2 id="subscriptions">5. Subscriptions and purchases</h2>
           <p>
-            Payments are processed by Google Play. Baboo Stories does not
-            receive your full payment card details. The app sends purchase
-            tokens and related subscription information to the Baboo Stories
-            backend to verify purchases, determine purchase status, and
-            maintain premium access.
+            Baboo Stories supports subscriptions through Apple App Store and
+            Google Play. Payments are processed by Apple or Google, not
+            directly by Baboo Stories. We do not receive your full payment card
+            details.
+          </p>
+          <p>
+            The app or backend may store purchase and subscription information
+            needed to unlock premium access, such as product ID, transaction or
+            order identifiers, purchase token or receipt information,
+            subscription status, entitlement status, and renewal or expiry
+            state.
           </p>
 
           <h2 id="local-storage">6. Local device storage</h2>
@@ -188,11 +206,16 @@
           <ul>
             <li>
               <strong>Google Firebase and Google Cloud:</strong> App backend,
-              anonymous authentication, analytics, and Cloud Functions.
+              app authentication, analytics, and Cloud Functions.
+            </li>
+            <li>
+              <strong>Apple App Store:</strong> Subscription purchase
+              processing, receipts, and verification for iOS users.
             </li>
             <li>
               <strong>Google Play Billing:</strong> Subscription purchase
-              processing and verification.
+              processing, order information, and verification for Android
+              users.
             </li>
             <li>
               <strong>Device share sheet and share_plus:</strong> Used only
@@ -214,10 +237,10 @@
             We retain information only as long as needed to provide the app,
             maintain subscriptions, improve reliability, comply with legal
             obligations, and resolve disputes. Feedback, analytics, device
-            registration records, and subscription entitlement records may be
-            kept while they are needed for those purposes. You may contact us to
-            request deletion of personal information associated with your use of
-            Baboo Stories.
+            registration records, support messages, and subscription
+            entitlement records may be kept while they are needed for those
+            purposes. You may contact us to request deletion of personal
+            information associated with your use of Baboo Stories.
           </p>
 
           <h2 id="permissions">9. No advertising platforms or sensitive permissions</h2>
