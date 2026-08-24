@@ -923,6 +923,21 @@ article.section > p:first-child .btn-secondary:focus {
   color: var(--brand-primary);
 }
 
+.blog-app-preview {
+  margin: 0 0 1.35rem;
+  overflow: hidden;
+  border: 1px solid rgba(92, 106, 196, 0.16);
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 18px 34px rgba(31, 42, 68, 0.12);
+}
+
+.blog-app-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .positioning-note {
   margin: 0 0 1.25rem;
   color: rgba(31, 42, 68, 0.78);
