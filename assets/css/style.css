@@ -97,6 +97,18 @@ body > header {
   color: var(--brand-dark);
 }
 
+.nav-links a[href$="early-bird-signup.html"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f7b733, #ff8f5a);
+  color: var(--brand-dark);
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(247, 183, 51, 0.28);
+}
+
 .nav-toggle {
   display: none;
   background: white;
@@ -163,6 +175,14 @@ body > header {
 .nav-links a:focus {
   background-color: rgba(92, 106, 196, 0.12);
   color: var(--brand-primary);
+}
+
+.nav-links a[href$="early-bird-signup.html"]:hover,
+.nav-links a[href$="early-bird-signup.html"]:focus {
+  background: linear-gradient(135deg, #ffd05a, #ff9b6c);
+  color: var(--brand-dark);
+  box-shadow: 0 14px 28px rgba(247, 183, 51, 0.36);
+  transform: translateY(-1px);
 }
 
 main {
@@ -1233,6 +1253,11 @@ footer a:focus {
   .nav-links a {
     width: 100%;
     padding: 0.65rem 0.75rem;
+  }
+
+  .nav-links a[href$="early-bird-signup.html"] {
+    margin-top: 0.25rem;
+    padding: 0.8rem 1rem;
   }
 }
 
