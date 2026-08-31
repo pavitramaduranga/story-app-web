@@ -225,6 +225,15 @@ main {
   height: 100%;
 }
 
+.app-download-hero {
+  max-width: var(--home-feature-width);
+}
+
+.app-download-hero .hero-card {
+  text-align: center;
+  width: 100%;
+}
+
 article > .hero-card {
   position: static !important;
   inset: auto;
@@ -244,58 +253,6 @@ article > .hero-card {
   margin-top: 1.25rem;
 }
 
-.homescreen-details {
-  margin-top: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.12);
-  color: inherit;
-  padding: 0.5rem 1rem;
-}
-
-.homescreen-details summary {
-  cursor: pointer;
-  font-weight: 600;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.homescreen-details summary::-webkit-details-marker {
-  display: none;
-}
-
-.homescreen-details summary::after {
-  content: "▾";
-  margin-left: auto;
-  transition: transform 0.2s ease;
-}
-
-.homescreen-details[open] summary::after {
-  transform: rotate(180deg);
-}
-
-.homescreen-details[open] {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.homescreen-instructions {
-  margin-top: 0.75rem;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.homescreen-instructions h4 {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.homescreen-instructions ol {
-  margin: 0.25rem 0 0;
-  padding-left: 1.25rem;
-}
-
 .hero-card p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
@@ -309,6 +266,10 @@ article > .hero-card {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
+}
+
+.app-download-hero .hero-actions {
+  justify-content: center;
 }
 
 .hero-card .hero-reassurance {
@@ -326,51 +287,6 @@ article > .hero-card {
   border: none;
   cursor: pointer;
   transition: var(--transition);
-}
-
-.copy-link-button {
-  margin-top: 0.75rem;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(31, 42, 68, 0.18);
-  background: white;
-  color: var(--brand-primary);
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.copy-link-button:hover,
-.copy-link-button:focus {
-  background: var(--brand-primary);
-  color: white;
-  border-color: transparent;
-}
-
-.copy-link-button:focus-visible {
-  outline: 3px solid rgba(49, 198, 212, 0.55);
-  outline-offset: 2px;
-}
-
-.copy-link-button.is-success {
-  background: var(--brand-secondary);
-  color: var(--brand-dark);
-  border-color: transparent;
-}
-
-.copy-feedback {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  min-height: 1.2em;
-  color: rgba(31, 42, 68, 0.75);
-}
-
-.copy-feedback.is-success {
-  color: var(--brand-secondary);
-}
-
-.copy-feedback.is-error {
-  color: var(--accent-red, #d64550);
 }
 
 .btn-primary {
@@ -531,6 +447,31 @@ article > .hero-card {
 
 .card .btn-group .btn {
   margin-top: 0;
+}
+
+.store-qr {
+  margin-top: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.store-qr img {
+  width: 160px;
+  height: 160px;
+  padding: 0.5rem;
+  border: 1px solid rgba(31, 42, 68, 0.1);
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 10px 24px rgba(31, 42, 68, 0.08);
+}
+
+.store-qr p {
+  max-width: 13rem;
+  color: rgba(31, 42, 68, 0.72);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .card .btn-primary {
@@ -1108,6 +1049,15 @@ article.section > p:first-child .btn-secondary:focus {
   align-items: start;
 }
 
+.app-store-layout {
+  align-items: stretch;
+}
+
+.app-store-layout > .card,
+.app-store-layout > .trust-panel {
+  height: 100%;
+}
+
 .info-panel {
   background: var(--bg-light);
   padding: 2rem;
@@ -1457,6 +1407,15 @@ footer a:focus {
 
   .hero-actions {
     justify-content: center;
+  }
+
+  .store-qr {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .store-qr p {
+    max-width: none;
   }
 
   .testimonial {

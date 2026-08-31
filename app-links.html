@@ -93,7 +93,7 @@
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="download-title">
+      <section class="hero app-download-hero" aria-labelledby="download-title">
         <div class="hero-card">
           <h1 id="download-title">Download Baboo Stories for iPhone and Android</h1>
           <p>
@@ -122,71 +122,11 @@
             </a>
           </div>
         </div>
-        <div class="info-panel">
-          <h3>Tip for easy sharing</h3>
-          <ul class="info-list">
-            <li>
-              <span class="highlight-icon" aria-hidden="true">🔗</span>
-              <div>
-                <strong>Copy this page link</strong>
-                <p>
-                  Share <code>https://baboostories.com/app-links.html</code> so
-                  friends can always get the latest download options.
-                </p>
-                <button
-                  class="copy-link-button"
-                  type="button"
-                  data-copy-value="https://baboostories.com/app-links.html"
-                >
-                  Copy link
-                </button>
-                <p class="copy-feedback" data-copy-feedback aria-live="polite"></p>
-              </div>
-            </li>
-            <li>
-              <span class="highlight-icon" aria-hidden="true">📱</span>
-              <div>
-                <strong>Add it to your homescreen</strong>
-                <p>
-                  Keep Baboo Stories just one tap away by saving this page on
-                  your phone.
-                </p>
-                <details class="homescreen-details">
-                  <summary>How to add on your device</summary>
-                  <div class="homescreen-instructions">
-                    <h4>Android (Chrome)</h4>
-                    <ol>
-                      <li>Tap the menu button (⋮) in the top-right corner.</li>
-                      <li>Select <strong>Add to Home screen</strong>.</li>
-                      <li>Confirm by tapping <strong>Add</strong>.</li>
-                    </ol>
-                    <h4>iPhone (Safari)</h4>
-                    <ol>
-                      <li>Tap the <strong>Share</strong> icon in Safari.</li>
-                      <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
-                      <li>Tap <strong>Add</strong> to place it on your Home Screen.</li>
-                    </ol>
-                  </div>
-                </details>
-              </div>
-            </li>
-            <li>
-              <span class="highlight-icon" aria-hidden="true">❤️</span>
-              <div>
-                <strong>Share the love</strong>
-                <p>
-                  Tag <strong>@BabooStories</strong> on social to join the
-                  growing community of mindful storytellers.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
       </section>
 
       <section class="section" aria-labelledby="ios">
         <h2 id="ios">Baboo Stories for iPhone</h2>
-        <div class="split-layout">
+        <div class="split-layout app-store-layout">
           <div class="card">
             <h3>Available on Apple</h3>
             <p>
@@ -201,6 +141,15 @@
               data-store-link="app-store"
               >Open in the App Store</a
             >
+            <div class="store-qr">
+              <img
+                src="assets/images/baboo-app-store-qr.svg?v=2"
+                alt="QR code to download Baboo Stories from the App Store"
+                width="160"
+                height="160"
+              />
+              <p>Scan with your phone to open the App Store.</p>
+            </div>
           </div>
           <div class="trust-panel">
             <h3>What to expect</h3>
@@ -231,6 +180,15 @@
             >
               Open in Google Play
             </a>
+            <div class="store-qr">
+              <img
+                src="assets/images/baboo-google-play-qr.svg?v=2"
+                alt="QR code to download Baboo Stories from Google Play"
+                width="160"
+                height="160"
+              />
+              <p>Scan with your phone to open Google Play.</p>
+            </div>
           </article>
           <article class="card">
             <h3>Help shape what comes next</h3>
@@ -307,54 +265,6 @@
         yearSpan.textContent = new Date().getFullYear();
       }
 
-      const copyLinkButton = document.querySelector('.copy-link-button');
-      if (copyLinkButton) {
-        const copyValue = copyLinkButton.getAttribute('data-copy-value') || window.location.href;
-        const feedbackEl = copyLinkButton.parentElement?.querySelector('[data-copy-feedback]');
-        const defaultLabel = copyLinkButton.textContent.trim();
-
-        const setFeedback = (message, state) => {
-          if (!feedbackEl) return;
-          feedbackEl.textContent = message;
-          feedbackEl.classList.remove('is-success', 'is-error');
-          if (state) {
-            feedbackEl.classList.add(state);
-          }
-        };
-
-        const handleSuccess = () => {
-          copyLinkButton.classList.add('is-success');
-          copyLinkButton.textContent = 'Copied!';
-          setFeedback('Link copied! Share away.', 'is-success');
-
-          window.setTimeout(() => {
-            copyLinkButton.classList.remove('is-success');
-            copyLinkButton.textContent = defaultLabel;
-            setFeedback('', null);
-          }, 2500);
-        };
-
-        copyLinkButton.addEventListener('click', async () => {
-          try {
-            if (navigator.clipboard?.writeText) {
-              await navigator.clipboard.writeText(copyValue);
-            } else {
-              const tempInput = document.createElement('input');
-              tempInput.value = copyValue;
-              tempInput.setAttribute('aria-hidden', 'true');
-              tempInput.style.position = 'absolute';
-              tempInput.style.left = '-9999px';
-              document.body.appendChild(tempInput);
-              tempInput.select();
-              document.execCommand('copy');
-              document.body.removeChild(tempInput);
-            }
-            handleSuccess();
-          } catch (error) {
-            setFeedback('Copy not supported. Tap and hold the link to share.', 'is-error');
-          }
-        });
-      }
     </script>
   </body>
 </html>
