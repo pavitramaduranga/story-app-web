@@ -97,7 +97,7 @@ body > header {
   color: var(--brand-dark);
 }
 
-.nav-links a[href$="early-bird-signup.html"] {
+.nav-links .nav-download-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -177,8 +177,8 @@ body > header {
   color: var(--brand-primary);
 }
 
-.nav-links a[href$="early-bird-signup.html"]:hover,
-.nav-links a[href$="early-bird-signup.html"]:focus {
+.nav-links .nav-download-link:hover,
+.nav-links .nav-download-link:focus {
   background: linear-gradient(135deg, #ffd05a, #ff9b6c);
   color: var(--brand-dark);
   box-shadow: 0 14px 28px rgba(247, 183, 51, 0.36);
@@ -527,7 +527,8 @@ article > .hero-card {
   padding: clamp(2rem, 5vw, 3rem);
 }
 
-.early-bird-section {
+.early-bird-section,
+.app-install-section {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.72fr);
   gap: clamp(1.5rem, 4vw, 3rem);
@@ -540,13 +541,76 @@ article > .hero-card {
   box-shadow: var(--shadow-card);
 }
 
-.early-bird-copy h2 {
+.app-install-section {
+  grid-template-columns: minmax(0, 0.78fr) minmax(340px, 0.9fr);
+  overflow: hidden;
+}
+
+.early-bird-copy h2,
+.app-install-copy h2 {
   margin-top: 0;
 }
 
-.early-bird-copy p {
+.early-bird-copy p,
+.app-install-copy p {
   max-width: 620px;
   color: rgba(43, 43, 43, 0.82);
+}
+
+.app-install-copy .hero-actions {
+  margin: 1.4rem 0 1rem;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 0.4rem;
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+.text-link:hover,
+.text-link:focus {
+  color: var(--brand-dark);
+  text-decoration: underline;
+}
+
+.app-screenshot-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.65rem, 2vw, 1rem);
+  align-items: end;
+}
+
+.app-screenshot-strip figure {
+  margin: 0;
+  overflow: hidden;
+  border: 8px solid white;
+  border-radius: 1.25rem;
+  background: white;
+  box-shadow: 0 20px 38px rgba(31, 42, 68, 0.18);
+}
+
+.app-screenshot-strip figure:nth-child(2) {
+  transform: translateY(-1.1rem);
+}
+
+.app-screenshot-strip img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  height: auto;
+  object-fit: cover;
+}
+
+.anytime-section {
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(247, 248, 251, 0.98), rgba(232, 251, 253, 0.8));
+  border: 1px solid rgba(31, 42, 68, 0.08);
+}
+
+.moment-card {
+  min-height: 220px;
 }
 
 .early-bird-form-card {
@@ -1270,7 +1334,7 @@ footer a:focus {
     padding: 0.65rem 0.75rem;
   }
 
-  .nav-links a[href$="early-bird-signup.html"] {
+  .nav-links .nav-download-link {
     margin-top: 0.25rem;
     padding: 0.8rem 1rem;
   }
@@ -1297,6 +1361,23 @@ footer a:focus {
 
   .testimonial {
     min-height: 300px;
+  }
+
+  .app-screenshot-strip {
+    grid-template-columns: repeat(3, minmax(115px, 1fr));
+    margin-inline: -0.75rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.75rem 1rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .app-screenshot-strip figure {
+    border-width: 6px;
+    scroll-snap-align: center;
+  }
+
+  .app-screenshot-strip figure:nth-child(2) {
+    transform: none;
   }
 
   .pregnancy-timeline,
@@ -1703,7 +1784,8 @@ footer a:focus {
     grid-template-columns: 1fr;
   }
 
-  .early-bird-section {
+  .early-bird-section,
+  .app-install-section {
     grid-template-columns: 1fr;
   }
 }

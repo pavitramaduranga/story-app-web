@@ -51,9 +51,30 @@
     document.head.appendChild(script);
   }
 
+  function initializeStoreLinkTracking() {
+    document.querySelectorAll('[data-store-link], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (typeof window.gtag !== 'function') return;
+        const href = link.href || '';
+        const inferredStore = href.includes('apps.apple.com')
+          ? 'app-store'
+          : href.includes('play.google.com/store')
+            ? 'google-play'
+            : null;
+
+        window.gtag('event', 'app_store_click', {
+          store: link.getAttribute('data-store-link') || inferredStore,
+          link_url: href,
+          page_path: window.location.pathname
+        });
+      });
+    });
+  }
+
   function initializePage() {
     document.querySelectorAll('.nav-toggle').forEach(initializeNavigation);
     ensureAnalyticsLoaded();
+    initializeStoreLinkTracking();
   }
 
   if (document.readyState === 'loading') {

@@ -15,15 +15,15 @@ const signupForms = document.querySelectorAll('[data-early-bird-form]');
 const shareSignupButton = document.getElementById('share-signup');
 
 if (!signupForms.length) {
-  console.warn('Early bird signup form not found on the page.');
+  console.warn('Free stories signup form not found on the page.');
 }
 
 const firebaseConfig = window.firebaseConfig;
 let db = null;
 
 const shareData = {
-  title: 'Baboo Stories early access',
-  text: 'Join the Baboo Stories early bird list for free story packs, app updates, and iPhone news.',
+  title: 'Baboo Stories free stories and updates',
+  text: 'Get Baboo Stories free story packs, parent-friendly ideas, and app updates for iPhone and Android.',
   url: 'https://baboostories.com/early-bird-signup.html',
 };
 

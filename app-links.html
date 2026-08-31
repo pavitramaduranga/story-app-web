@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Get the Baboo Stories app on Google Play and the Apple App Store, with easy sharing links for families."
+      content="Get the Baboo Stories app on the Apple App Store and Google Play, with easy sharing links for families."
     />
     <title>Get Baboo Stories — App Store and Google Play Links</title>
     <link rel="canonical" href="https://baboostories.com/app-links.html" />
@@ -14,7 +14,7 @@
     <meta property="og:title" content="Get Baboo Stories — App Store and Google Play Links" />
     <meta
       property="og:description"
-      content="Get the Baboo Stories app on Google Play and the Apple App Store, with easy sharing links for families."
+      content="Get the Baboo Stories app on the Apple App Store and Google Play, with easy sharing links for families."
     />
     <meta property="og:url" content="https://baboostories.com/app-links.html" />
     <meta property="og:image" content="https://baboostories.com/assets/images/baboo-stories-bedtime-story-app-banner-desktop.webp" />
@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="Get Baboo Stories — App Store and Google Play Links" />
     <meta
       name="twitter:description"
-      content="Get the Baboo Stories app on Google Play and the Apple App Store, with easy sharing links for families."
+      content="Get the Baboo Stories app on the Apple App Store and Google Play, with easy sharing links for families."
     />
     <meta name="twitter:image" content="https://baboostories.com/assets/images/baboo-stories-bedtime-story-app-banner-desktop.webp" />
     <script type="application/ld+json">
@@ -37,9 +37,13 @@
         "name": "Baboo Stories",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Android, iOS",
-        "description": "Get the Baboo Stories app on Google Play and the Apple App Store, with easy sharing links for families.",
+        "description": "Get the Baboo Stories app on the Apple App Store and Google Play, with easy sharing links for families.",
         "url": "https://baboostories.com/app-links.html",
-        "downloadUrl": "https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share",
+        "downloadUrl": "https://apps.apple.com/us/app/baboo-stories/id6795747764",
+        "sameAs": [
+          "https://apps.apple.com/us/app/baboo-stories/id6795747764",
+          "https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
+        ],
         "publisher": {
           "@type": "Organization",
           "@id": "https://baboostories.com/#organization",
@@ -83,7 +87,7 @@
           <a href="about-developer.html">About the Developer</a>
           <a href="blogs.html">Blog</a>
           <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="early-bird-signup.html">Early Bird Access</a>
+          <a class="nav-download-link" href="app-links.html">Download the App</a>
         </div>
       </nav>
     </header>
@@ -91,29 +95,30 @@
     <main>
       <section class="hero" aria-labelledby="download-title">
         <div class="hero-card">
-          <h1 id="download-title">Share the story magic with one easy link</h1>
+          <h1 id="download-title">Download Baboo Stories for iPhone and Android</h1>
           <p>
-            Whether you're sharing Baboo Stories with fellow parents or
-            installing it on a new device, this page always has the latest
-            download options. Save it, share it, and keep bedtime adventures a
-            tap away.
+            Keep gentle, parent-led stories ready for bedtime, quiet time, and
+            everyday reading together. Share this page with another parent or
+            open your store below.
           </p>
           <div class="hero-actions">
-            <a
-              class="btn btn-android"
-              href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
-              target="_blank"
-              rel="noopener"
-            >
-              Get it on Android
-            </a>
             <a
               class="btn btn-apple"
               href="https://apps.apple.com/us/app/baboo-stories/id6795747764"
               target="_blank"
               rel="noopener"
+              data-store-link="app-store"
             >
               Download on the App Store
+            </a>
+            <a
+              class="btn btn-android"
+              href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener"
+              data-store-link="google-play"
+            >
+              Get it on Google Play
             </a>
           </div>
         </div>
@@ -179,43 +184,6 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="android">
-        <h2 id="android">Baboo Stories for Android</h2>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Google Play Store</h3>
-            <p>
-              Download the latest production build from Google Play. Updates roll
-              out regularly with fresh stories and new calming soundscapes.
-            </p>
-            <a
-              class="btn btn-android"
-              href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
-              target="_blank"
-              rel="noopener"
-            >
-              Open in Google Play
-            </a>
-          </article>
-          <article class="card">
-            <h3>Help shape what comes next</h3>
-            <p>
-              Tried Baboo Stories with your family? Share what felt useful,
-              what your child loved, or what would make bedtime smoother.
-            </p>
-            <div class="btn-group">
-              <a
-                class="btn btn-secondary"
-                href="mailto:hello@baboostories.com?subject=Baboo%20Stories%20Feedback"
-              >
-                Send feedback
-              </a>
-              <a class="btn btn-primary" href="early-bird-signup.html">Get updates</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
       <section class="section" aria-labelledby="ios">
         <h2 id="ios">Baboo Stories for iPhone</h2>
         <div class="split-layout">
@@ -230,6 +198,7 @@
               href="https://apps.apple.com/us/app/baboo-stories/id6795747764"
               target="_blank"
               rel="noopener"
+              data-store-link="app-store"
               >Open in the App Store</a
             >
           </div>
@@ -241,6 +210,44 @@
               <li>Seamless sync for households with mixed devices</li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="android">
+        <h2 id="android">Baboo Stories for Android</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Google Play Store</h3>
+            <p>
+              Download the latest production build from Google Play. Updates roll
+              out regularly with fresh stories and new calming soundscapes.
+            </p>
+            <a
+              class="btn btn-android"
+              href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener"
+              data-store-link="google-play"
+            >
+              Open in Google Play
+            </a>
+          </article>
+          <article class="card">
+            <h3>Help shape what comes next</h3>
+            <p>
+              Tried Baboo Stories with your family? Share what felt useful,
+              what your child loved, or what would make story time smoother.
+            </p>
+            <div class="btn-group">
+              <a
+                class="btn btn-secondary"
+                href="mailto:hello@baboostories.com?subject=Baboo%20Stories%20Feedback"
+              >
+                Send feedback
+              </a>
+              <a class="btn btn-primary" href="early-bird-signup.html">Get free story updates</a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
@@ -259,12 +266,20 @@
           <a href="/">Home</a>
           <a href="app-links.html">Get the App</a>
           <a
+            href="https://apps.apple.com/us/app/baboo-stories/id6795747764"
+            target="_blank"
+            rel="noopener"
+            data-store-link="app-store"
+            >Download on the App Store</a
+          >
+          <a
             href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
             target="_blank"
             rel="noopener"
+            data-store-link="google-play"
             >Download on Google Play</a
           >
-          <a href="early-bird-signup.html">Early Bird Access</a>
+          <a href="early-bird-signup.html">Free Stories &amp; Updates</a>
         </div>
         <div class="footer-links">
           <strong>Company</strong>
