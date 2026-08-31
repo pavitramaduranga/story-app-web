@@ -51,30 +51,131 @@
     document.head.appendChild(script);
   }
 
-  function initializeStoreLinkTracking() {
-    document.querySelectorAll('[data-store-link], a[href*="apps.apple.com"], a[href*="play.google.com/store"]').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (typeof window.gtag !== 'function') return;
-        const href = link.href || '';
-        const inferredStore = href.includes('apps.apple.com')
-          ? 'app-store'
-          : href.includes('play.google.com/store')
-            ? 'google-play'
-            : null;
+  function getVisibleText(link) {
+    return (link.textContent || link.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+  }
 
-        window.gtag('event', 'app_store_click', {
-          store: link.getAttribute('data-store-link') || inferredStore,
-          link_url: href,
-          page_path: window.location.pathname
-        });
-      });
+  function normalizeStore(store) {
+    if (store === 'app-store' || store === 'app_store') return 'app_store';
+    if (store === 'google-play' || store === 'google_play') return 'google_play';
+    return store || 'unknown';
+  }
+
+  function inferStore(link) {
+    const href = link.href || '';
+    if (href.includes('apps.apple.com')) return 'app_store';
+    if (href.includes('play.google.com/store')) return 'google_play';
+    return normalizeStore(link.getAttribute('data-store-link'));
+  }
+
+  function getPageLocation(link) {
+    if (link.closest('footer')) return 'footer';
+    if (link.closest('nav')) return 'navigation';
+
+    const path = window.location.pathname.replace(/\/$/, '');
+    if (!path || path === '/index.html') return 'homepage';
+    if (path.endsWith('/app-links.html')) return 'app_links_page';
+    if (path.endsWith('/early-bird-signup.html')) return 'early_bird_page';
+    if (path === '/blogs.html' || path.startsWith('/blog') || path.includes('/blog-')) return 'blog';
+    return 'site';
+  }
+
+  function getTrackedClick(link) {
+    const href = link.href || '';
+    const url = new URL(href, window.location.href);
+    const linkText = getVisibleText(link);
+    const baseParams = {
+      link_location: getPageLocation(link),
+      link_text: linkText,
+      outbound_url: url.href
+    };
+
+    if (url.hostname === 'apps.apple.com' || url.hostname === 'play.google.com') {
+      return {
+        name: 'app_link_click',
+        params: {
+          ...baseParams,
+          app_store: inferStore(link)
+        }
+      };
+    }
+
+    if (url.protocol === 'mailto:' && url.pathname.toLowerCase() === 'hello@baboostories.com') {
+      return {
+        name: 'contact_click',
+        params: baseParams
+      };
+    }
+
+    if (url.pathname.endsWith('/early-bird-signup.html')) {
+      return {
+        name: 'early_bird_signup_click',
+        params: baseParams
+      };
+    }
+
+    return null;
+  }
+
+  function shouldLetBrowserHandleClick(event, link) {
+    return (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      link.target.toLowerCase() === '_blank' ||
+      link.hasAttribute('download')
+    );
+  }
+
+  function trackClickIntent(event) {
+    if (!event.target || typeof event.target.closest !== 'function') return;
+
+    const link = event.target.closest('a[href]');
+    if (!link || typeof window.gtag !== 'function') return;
+
+    const trackedClick = getTrackedClick(link);
+    if (!trackedClick) return;
+
+    const shouldDelayNavigation = !shouldLetBrowserHandleClick(event, link);
+    const params = {
+      ...trackedClick.params,
+      transport_type: 'beacon'
+    };
+
+    if (!shouldDelayNavigation) {
+      window.gtag('event', trackedClick.name, params);
+      return;
+    }
+
+    event.preventDefault();
+
+    let navigationStarted = false;
+    const continueNavigation = () => {
+      if (navigationStarted) return;
+      navigationStarted = true;
+      window.location.href = link.href;
+    };
+
+    window.gtag('event', trackedClick.name, {
+      ...params,
+      event_callback: continueNavigation,
+      event_timeout: 800
     });
+
+    window.setTimeout(continueNavigation, 900);
+  }
+
+  function initializeIntentTracking() {
+    document.addEventListener('click', trackClickIntent);
   }
 
   function initializePage() {
     document.querySelectorAll('.nav-toggle').forEach(initializeNavigation);
     ensureAnalyticsLoaded();
-    initializeStoreLinkTracking();
+    initializeIntentTracking();
   }
 
   if (document.readyState === 'loading') {
