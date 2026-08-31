@@ -611,23 +611,83 @@ article > .hero-card {
 }
 
 .app-screenshot-strip {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.65rem, 2vw, 1rem);
-  align-items: end;
+  grid-template-columns: 0.76fr 1.08fr 0.76fr;
+  gap: clamp(0.35rem, 1.25vw, 0.75rem);
+  align-items: center;
+  justify-self: end;
+  isolation: isolate;
+  width: min(100%, 590px);
+  padding: clamp(0.75rem, 2.4vw, 1.25rem) 0;
+}
+
+.app-screenshot-strip::before {
+  content: "";
+  position: absolute;
+  inset: 13% 1% 7%;
+  z-index: -1;
+  border-radius: 2rem;
+  background:
+    linear-gradient(135deg, rgba(105, 111, 203, 0.1), rgba(255, 199, 89, 0.16)),
+    rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .app-screenshot-strip figure {
+  position: relative;
   margin: 0;
-  overflow: hidden;
-  border: 8px solid white;
-  border-radius: 1.25rem;
-  background: white;
-  box-shadow: 0 20px 38px rgba(31, 42, 68, 0.18);
+  overflow: visible;
+  padding: 0.48rem 0.42rem 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 1.65rem;
+  background: linear-gradient(180deg, #293044 0%, #111827 100%);
+  box-shadow:
+    0 22px 42px rgba(31, 42, 68, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.42) inset;
+  will-change: transform;
+}
+
+.app-screenshot-strip figure::before,
+.app-screenshot-strip figure::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.app-screenshot-strip figure::before {
+  top: 0.28rem;
+  width: 30%;
+  height: 0.28rem;
+}
+
+.app-screenshot-strip figure::after {
+  bottom: 0.3rem;
+  width: 28%;
+  height: 0.2rem;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.app-screenshot-strip figure:nth-child(1) {
+  transform: translate(0.7rem, 0.7rem) rotate(-3deg) scale(0.94);
 }
 
 .app-screenshot-strip figure:nth-child(2) {
-  transform: translateY(-1.1rem);
+  z-index: 1;
+  padding: 0.54rem 0.48rem 0.88rem;
+  border-radius: 1.85rem;
+  transform: translateY(-0.25rem) scale(1.08);
+  box-shadow:
+    0 28px 52px rgba(31, 42, 68, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.48) inset;
+}
+
+.app-screenshot-strip figure:nth-child(3) {
+  transform: translate(-0.7rem, 0.65rem) rotate(3deg) scale(0.94);
 }
 
 .app-screenshot-strip img {
@@ -636,6 +696,10 @@ article > .hero-card {
   aspect-ratio: 9 / 16;
   height: auto;
   object-fit: cover;
+  border-radius: 1.18rem;
+  background: #f7f8fb;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  backface-visibility: hidden;
 }
 
 .anytime-section {
@@ -1400,20 +1464,47 @@ footer a:focus {
   }
 
   .app-screenshot-strip {
-    grid-template-columns: repeat(3, minmax(115px, 1fr));
+    grid-template-columns: repeat(3, minmax(122px, 1fr));
+    gap: 0.75rem;
     margin-inline: -0.75rem;
+    width: auto;
     overflow-x: auto;
-    padding: 0.25rem 0.75rem 1rem;
+    padding: 0.45rem 0.75rem 1.05rem;
     scroll-snap-type: x mandatory;
   }
 
+  .app-screenshot-strip::before {
+    inset: 18% 0.5rem 12%;
+    border-radius: 1.5rem;
+  }
+
   .app-screenshot-strip figure {
-    border-width: 6px;
+    padding: 0.4rem 0.34rem 0.68rem;
+    border-radius: 1.4rem;
     scroll-snap-align: center;
   }
 
+  .app-screenshot-strip figure::before {
+    top: 0.22rem;
+    height: 0.22rem;
+  }
+
+  .app-screenshot-strip figure::after {
+    bottom: 0.25rem;
+    height: 0.16rem;
+  }
+
+  .app-screenshot-strip figure:nth-child(1),
   .app-screenshot-strip figure:nth-child(2) {
     transform: none;
+  }
+
+  .app-screenshot-strip figure:nth-child(3) {
+    transform: none;
+  }
+
+  .app-screenshot-strip img {
+    border-radius: 1rem;
   }
 
   .pregnancy-timeline,
@@ -1823,6 +1914,10 @@ footer a:focus {
   .early-bird-section,
   .app-install-section {
     grid-template-columns: 1fr;
+  }
+
+  .app-screenshot-strip {
+    justify-self: center;
   }
 }
 
