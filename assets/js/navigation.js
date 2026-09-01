@@ -91,11 +91,12 @@
     };
 
     if (url.hostname === 'apps.apple.com' || url.hostname === 'play.google.com') {
+      const appStore = inferStore(link);
       return {
-        name: 'app_link_click',
+        name: `${appStore}_click`,
         params: {
           ...baseParams,
-          app_store: inferStore(link)
+          app_store: appStore
         }
       };
     }
