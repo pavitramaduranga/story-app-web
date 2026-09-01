@@ -1,6 +1,14 @@
 (function () {
   const GA_MEASUREMENT_ID = 'G-YS5KX79KBQ';
 
+  function canonicalizeIndexUrl() {
+    const path = window.location.pathname;
+    if (!path.endsWith('/index.html')) return;
+
+    const cleanPath = path.slice(0, -'index.html'.length) || '/';
+    window.location.replace(`${cleanPath}${window.location.search}${window.location.hash}`);
+  }
+
   function initializeNavigation(navToggle) {
     const navBar = navToggle.closest('nav');
     if (!navBar) return;
@@ -178,6 +186,8 @@
     ensureAnalyticsLoaded();
     initializeIntentTracking();
   }
+
+  canonicalizeIndexUrl();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializePage);
