@@ -107,10 +107,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css?v=20260529-cta-alignment" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20260902-brand-refresh" />
   </head>
   <body>
     <header>
@@ -145,42 +145,17 @@
     </header>
 
     <main>
-      <section class="home-banner" aria-label="Baboo Stories bedtime app banner">
+      <section class="hero home-hero" aria-labelledby="hero-title">
         <picture>
-          <source
-            media="(max-width: 640px)"
-            srcset="assets/images/baboo-stories-bedtime-story-app-banner-mobile.webp"
-            width="1122"
-            height="1402"
-          />
           <img
-            src="assets/images/baboo-stories-bedtime-story-app-banner-desktop.webp"
-            alt="Baboo Stories bedtime story app banner showing a family reading magical stories together"
-            width="1672"
-            height="941"
+            src="assets/images/baboo-family-storytime-father-generated.webp"
+            alt="A parent and two children reading a glowing bedtime story together"
             fetchpriority="high"
           />
         </picture>
-      </section>
-
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-card">
-          <span class="badge"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 .5a1 1 0 01.894.553l1.882 3.815 4.21.612a1 1 0 01.554 1.705l-3.046 2.969.719 4.197a1 1 0 01-1.451 1.054L10 13.347l-3.762 1.97a1 1 0 01-1.451-1.054l.72-4.197-3.047-2.97A1 1 0 013.014 4.98l4.21-.612L9.106 1.053A1 1 0 0110 .5z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            Gentle family storytelling</span
-          >
-          <h1 id="hero-title">Gentle stories parents read aloud with their children.</h1>
+        <div class="home-hero-copy">
+          <p class="hero-brand">Baboo Stories</p>
+          <h1 id="hero-title">Gentle stories parents read aloud with their children</h1>
           <p>
             Baboo Stories helps families share short, kind stories for bedtime,
             quiet time, and everyday reading together without autoplay videos or
@@ -219,9 +194,6 @@
             </a>
             <a class="btn btn-preview" href="app-links.html">Preview the App</a>
           </div>
-          <p class="hero-reassurance">
-            Perfect for bedtime, quiet time, and calm story moments during the day.
-          </p>
         </div>
       </section>
 
@@ -643,13 +615,6 @@
     </footer>
 
     <script src="assets/js/navigation.js"></script>
-    <script>
-      const yearSpan = document.getElementById('year');
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-      }
-    </script>
-    <script src="assets/js/firebase-config.js"></script>
-    <script type="module" src="assets/js/early-bird-form.js"></script>
+    
   </body>
 </html>
