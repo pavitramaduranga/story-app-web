@@ -181,8 +181,15 @@
     document.addEventListener('click', trackClickIntent);
   }
 
+  function initializeFooterYear() {
+    document.querySelectorAll('#year, #current-year').forEach((yearElement) => {
+      yearElement.textContent = new Date().getFullYear();
+    });
+  }
+
   function initializePage() {
     document.querySelectorAll('.nav-toggle').forEach(initializeNavigation);
+    initializeFooterYear();
     ensureAnalyticsLoaded();
     initializeIntentTracking();
   }

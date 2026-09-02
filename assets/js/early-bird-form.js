@@ -9,7 +9,6 @@ import {
   addDoc,
   serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js';
-import { trackEvent } from './analytics.js';
 
 const signupForms = document.querySelectorAll('[data-early-bird-form]');
 const shareSignupButton = document.getElementById('share-signup');
@@ -31,6 +30,12 @@ const shareByEmail = () => {
   const subject = encodeURIComponent(shareData.title);
   const body = encodeURIComponent(`${shareData.text} ${shareData.url}`);
   window.location.href = `mailto:?subject=${subject}&body=${body}`;
+};
+
+const trackEvent = (name, params) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, params);
+  }
 };
 
 if (shareSignupButton) {
