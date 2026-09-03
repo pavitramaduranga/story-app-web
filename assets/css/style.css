@@ -1179,6 +1179,27 @@ article.section > p:first-child .btn-secondary:focus {
   text-decoration: underline;
 }
 
+.article-content .btn-primary,
+.article-content .article-cta .btn-primary,
+.article-content .cta-card .btn-primary {
+  color: white !important;
+}
+
+.article-content .btn-secondary,
+.article-content .article-cta .btn-secondary,
+.article-content .cta-card .btn-secondary {
+  color: var(--brand-dark) !important;
+}
+
+.article-content .btn:hover,
+.article-content .btn:focus,
+.article-content .article-cta .btn:hover,
+.article-content .article-cta .btn:focus,
+.article-content .cta-card .btn:hover,
+.article-content .cta-card .btn:focus {
+  text-decoration: none;
+}
+
 .article-content ul,
 .article-content ol {
   padding-left: 1.3rem;
