@@ -28,6 +28,9 @@ BabooStories is a calm, kid- and toddler-friendly story collection for parents a
 
 ## Reading Experience
 
+- Parents read the story text from their phone to their children. Audio stories and automated narration are outside the product scope.
+- The app is free to download. Some stories are locked; an optional monthly subscription gives access to all stories. This access model was confirmed by the developer on September 11, 2026; do not imply that every story is free or invent a subscription price.
+
 - Stories should be calm, gentle, and toddler-friendly.
 - BabooStories works well for bedtime, wind-down routines, quiet time, and shared family reading.
 - The app is not limited to bedtime; it can support any calm story moment during the day.
