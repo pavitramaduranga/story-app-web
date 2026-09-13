@@ -2546,7 +2546,7 @@ footer a:focus {
 .home-hero {
   width: 100%; max-width: 1200px; margin: 0 auto; padding: 3rem 0;
   min-height: 0; grid-template-columns: 1.1fr 1fr; align-items: center;
-  background: var(--bg-warm); gap: 2.5rem; overflow: visible;
+  background: transparent; gap: 2.5rem; overflow: visible;
 }
 .home-hero::after { content: none; }
 .home-hero picture { position: static; z-index: auto; grid-column: 2; grid-row: 1; }
