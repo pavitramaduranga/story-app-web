@@ -83,24 +83,22 @@
         </button>
         <div class="nav-links" id="primary-navigation" data-visible="false">
           <a href="/">Home</a>
-          <a href="app-links.html" aria-current="page">Get the App</a>
-          <a href="about-developer.html">About the Developer</a>
+          <a href="about-developer.html">About</a>
           <a href="blogs.html">Blog</a>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a class="nav-download-link" href="app-links.html">Download the App</a>
+          <a class="nav-download-link" href="app-links.html" aria-current="page">Download the App</a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="hero app-download-hero" aria-labelledby="download-title">
+      <section class="hero app-download-hero" data-cta-placement="hero" aria-labelledby="download-title">
         <div class="hero-card">
           <h1 id="download-title">Download Baboo Stories for iPhone and Android</h1>
           <p>
             Keep gentle, parent-led stories ready for bedtime, quiet time, and
             everyday reading together.
           </p>
-          <div class="hero-actions">
+          <p class="download-access">Free to download. Some stories require an optional monthly subscription.</p><div class="hero-actions">
             <a
               class="store-badge-link store-badge-apple"
               href="https://apps.apple.com/us/app/baboo-stories/id6795747764"
@@ -135,7 +133,53 @@
         </div>
       </section>
 
-      <section class="section app-store-section" aria-labelledby="stores">
+            <section class="section app-preview" id="app-preview" aria-labelledby="preview-title" data-cta-placement="preview">
+        <h2 id="preview-title">See inside the app</h2><p class="section-intro">Choose a collection, find a story, and read together at your child's pace.</p>
+        <div class="app-screenshot-strip" aria-label="Baboo Stories app screenshots">
+          <figure>
+            <img src="assets/images/app_screens/story_categories.webp" alt="Baboo Stories category screen with story collections" loading="lazy" width="738" height="1600" />
+          <figcaption>Choose a story collection</figcaption></figure>
+          <figure>
+            <img src="assets/images/app_screens/story_view.webp" alt="Baboo Stories reading screen with a story open" loading="lazy" width="738" height="1600" />
+          <figcaption>Read aloud in your own voice</figcaption></figure>
+          <figure>
+            <img src="assets/images/app_screens/story_list.webp" alt="Baboo Stories list of gentle stories for children" loading="lazy" width="738" height="1600" />
+          <figcaption>Find your next gentle story</figcaption></figure>
+        </div>
+        <div class="hero-actions">
+            <a
+              class="store-badge-link store-badge-apple"
+              href="https://apps.apple.com/us/app/baboo-stories/id6795747764"
+              target="_blank"
+              rel="noopener"
+              data-store-link="app-store"
+              aria-label="Download Baboo Stories on the App Store"
+            >
+              <img
+                src="assets/images/app-store-badge.svg"
+                alt="Download on the App Store"
+                width="120"
+                height="40"
+              />
+            </a>
+            <a
+              class="store-badge-link store-badge-google"
+              href="https://play.google.com/store/apps/details?id=baboo.stories&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener"
+              data-store-link="google-play"
+              aria-label="Get Baboo Stories on Google Play"
+            >
+              <img
+                src="assets/images/google-play-badge.svg"
+                alt="Get it on Google Play"
+                width="180"
+                height="53"
+              />
+            </a>
+          </div>
+      </section>
+<section class="section app-store-section" aria-labelledby="stores">
         <div class="app-store-header">
           <h2 id="stores">Choose your app store</h2>
           <p class="section-intro">Free to download on the App Store and Google Play. Some stories are locked; an optional monthly subscription unlocks all stories.</p>
@@ -260,7 +304,7 @@
       <p class="footer-bottom">© <span id="year"></span> Baboo Stories. All rights reserved.</p>
     </footer>
 
-    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/navigation.js?v=20260912-readability"></script>
     
   </body>
 </html>

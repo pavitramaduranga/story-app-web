@@ -31,6 +31,13 @@
       link.addEventListener('click', closeNav);
     });
 
+    navBar.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+        closeNav();
+        navToggle.focus();
+      }
+    });
+
     window.addEventListener('resize', () => {
       if (window.innerWidth > 1080) {
         closeNav();
@@ -60,7 +67,8 @@
   }
 
   function getVisibleText(link) {
-    return (link.textContent || link.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+    return (link.textContent || '').replace(/\s+/g, ' ').trim() ||
+      (link.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
   }
 
   function normalizeStore(store) {
@@ -94,6 +102,10 @@
     const linkText = getVisibleText(link);
     const baseParams = {
       link_location: getPageLocation(link),
+      cta_placement: link.closest('footer') ? 'footer' :
+        link.closest('[data-cta-placement]')?.getAttribute('data-cta-placement') ||
+        (link.closest('nav') ? 'navigation' : link.closest('.article-content') ? 'article' :
+          link.closest('.hero') ? 'hero' : link.closest('.cta-card') ? 'closing' : 'content'),
       link_text: linkText,
       outbound_url: url.href
     };

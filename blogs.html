@@ -77,10 +77,8 @@
         </button>
         <div class="nav-links" id="primary-navigation" data-visible="false">
           <a href="/">Home</a>
-          <a href="app-links.html">Get the App</a>
-          <a href="about-developer.html">About the Developer</a>
+          <a href="about-developer.html">About</a>
           <a href="blogs.html" aria-current="page">Blog</a>
-          <a href="privacy-policy.html">Privacy Policy</a>
           <a class="nav-download-link" href="app-links.html">Download the App</a>
         </div>
       </nav>
@@ -88,6 +86,7 @@
 
     <main>
       <section class="hero blog-hub-hero" aria-labelledby="blog-title">
+        <img class="blog-hero-image" src="assets/images/baboo-parent-child-story-time-realistic.webp" alt="A parent and child sharing a quiet story moment with a tablet" width="1200" height="800" fetchpriority="high" decoding="async">
         <div class="hero-card">
           <h1 id="blog-title">Baboo Stories Blog</h1>
           <p>
@@ -106,7 +105,7 @@
         </div>
         <div class="info-panel" aria-label="Featured topics">
           <figure class="blog-app-preview">
-            <img src="assets/images/App%20Graphics/App%20screen%20view.webp" alt="Baboo Stories app showing an illustrated Old MacDonald story reading screen" width="1680" height="945" loading="eager">
+            <img src="assets/images/App%20Graphics/App%20screen%20view.webp" alt="Baboo Stories app showing an illustrated Old MacDonald story reading screen" width="1680" height="945" loading="lazy">
           </figure>
           <h3>What we're writing about</h3>
           <ul class="info-list">
@@ -410,11 +409,12 @@
       </section>
 
       <section class="section" aria-labelledby="newsletter-title">
-        <div class="hero-card blog-newsletter-card">
+        <div class="hero-card blog-newsletter-card" data-cta-placement="closing">
+          <span class="newsletter-eyebrow">A little inspiration for story time</span>
           <h2 id="newsletter-title">Get free stories and parent-friendly ideas</h2>
           <p>
-            Get fresh blog articles, story prompts, and gentle reading ideas
-            while the app stays one tap away on iPhone and Android.
+            Bring a little more imagination to your next story time with fresh
+            articles, gentle prompts, and reading ideas to try together.
           </p>
           <div class="hero-actions">
             <a class="store-badge-link store-badge-apple" href="https://apps.apple.com/us/app/baboo-stories/id6795747764" target="_blank" rel="noopener" data-store-link="app-store" aria-label="Download Baboo Stories on the App Store">
@@ -482,7 +482,7 @@
       </div>
       <p class="footer-bottom">&copy; <span id="current-year"></span> Baboo Stories. All rights reserved.</p>
     </footer>
-    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/navigation.js?v=20260912-readability"></script>
 
   </body>
 </html>
