@@ -96,6 +96,11 @@
     return 'site';
   }
 
+  function getTrackingAttribute(link, attribute) {
+    const element = link.closest(`[${attribute}]`);
+    return element?.getAttribute(attribute)?.trim() || '';
+  }
+
   function getTrackedClick(link) {
     const href = link.href || '';
     const url = new URL(href, window.location.href);
@@ -109,6 +114,16 @@
       link_text: linkText,
       outbound_url: url.href
     };
+
+    const contextualParams = {
+      content_slug: getTrackingAttribute(link, 'data-content-slug'),
+      content_topic: getTrackingAttribute(link, 'data-content-topic'),
+      cta_variant: getTrackingAttribute(link, 'data-cta-variant')
+    };
+
+    Object.entries(contextualParams).forEach(([name, value]) => {
+      if (value) baseParams[name] = value;
+    });
 
     if (url.hostname === 'apps.apple.com' || url.hostname === 'play.google.com') {
       const appStore = inferStore(link);
