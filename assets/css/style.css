@@ -2615,9 +2615,11 @@ footer :focus-visible, .cta-card :focus-visible, .article-content .hero-card :fo
 .article-content .hero-card a:not(.btn):not(.store-badge-link) { color: #fffaf0; }
 
 /* Show the full blog hero photograph and discover it directly from HTML. */
+.blog-hub-page .brand-logo { width: 56px; height: 56px; }
+.blog-hub-page .navbar { padding-block: 0.75rem; }
 .blog-hub-hero {
   width: 100%; max-width: 1200px; margin: 0 auto; min-height: 0;
-  padding: 2.5rem 0; background: transparent; overflow: visible;
+  padding: 2.5rem 0 1rem; background: transparent; overflow: visible;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   align-items: center; gap: 2rem;
 }
@@ -2626,9 +2628,20 @@ footer :focus-visible, .cta-card :focus-visible, .article-content .hero-card :fo
 .blog-hub-hero .hero-card { grid-column: 1; grid-row: 1; color: var(--brand-dark); text-align: left; }
 .blog-hub-hero .hero-card h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.12; color: var(--brand-dark); }
 .blog-hub-hero .hero-card p { color: var(--text-body); }
-.blog-hub-hero .hero-actions { justify-content: flex-start; }
+.blog-hub-hero .hero-actions { justify-content: flex-start; align-items: center; }
+.blog-hub-hero + #latest-posts { margin-top: 1rem; }
+.blog-hub-hero + #latest-posts .section-intro { margin-bottom: 1.5rem; }
+@media (min-width: 721px) and (max-width: 1100px) {
+  .blog-hub-hero .hero-actions { display: grid; grid-template-columns: max-content max-content; gap: 0.75rem; }
+  .blog-hub-hero .hero-actions .btn { grid-column: 1 / -1; justify-self: start; }
+}
 @media (max-width: 720px) {
-  .blog-hub-hero { grid-template-columns: minmax(0, 1fr); padding: 1.75rem 0; gap: 1.5rem; }
+  .blog-hub-page .brand-logo { width: 52px; height: 52px; }
+  .blog-hub-hero { grid-template-columns: minmax(0, 1fr); padding: 1.75rem 0 1rem; gap: 1.5rem; }
+  .blog-hub-hero .hero-card h1 { font-size: clamp(2rem, 7vw, 3rem); }
+  .blog-hub-hero .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 0.75rem; }
+  .blog-hub-hero .hero-actions .btn { grid-column: 1 / -1; justify-self: start; }
+  .blog-hub-hero .store-badge-link img { height: auto; max-height: 44px; width: 100%; }
   .blog-hero-image { grid-column: 1; grid-row: 2; }
 }
 
