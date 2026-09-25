@@ -1321,6 +1321,10 @@ article.section > p:first-child .btn-secondary:focus {
   overflow-wrap: anywhere;
 }
 
+.article-content :is(h2, h3)[id] {
+  scroll-margin-top: 7rem;
+}
+
 .article-callout-after-card {
   margin-top: 3rem;
 }
