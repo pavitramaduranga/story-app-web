@@ -1321,6 +1321,10 @@ article.section > p:first-child .btn-secondary:focus {
   overflow-wrap: anywhere;
 }
 
+.article-callout-after-card {
+  margin-top: 3rem;
+}
+
 .article-callout strong {
   display: block;
   color: var(--brand-dark);
