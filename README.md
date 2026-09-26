@@ -172,6 +172,8 @@ Do not link to an article's `/index.html` URL.
 
 Run the full checklist in `SEO_CHECKLIST.md`. At minimum, verify:
 
+- `node scripts/validate-seo.mjs` passes or any reported oversized image files
+  are intentionally excluded from live SEO pages;
 - each indexable page has one self-referencing canonical;
 - canonical, `og:url`, and structured-data `mainEntityOfPage` agree;
 - `blogs.html` links to every intended article;
