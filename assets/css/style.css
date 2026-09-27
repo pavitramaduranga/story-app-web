@@ -2670,3 +2670,102 @@ footer :focus-visible, .cta-card :focus-visible, .article-content .hero-card :fo
 .blog-newsletter-card p { color: #33403d; max-width: 62ch; margin: 0 0 1.5rem; }
 .blog-newsletter-card .hero-actions { justify-content: flex-start; gap: 0.85rem; }
 .blog-newsletter-card .btn-secondary { border: 1px solid #086c69; }
+
+/* Enhanced bedtime rituals article */
+.ritual-inline-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  border: 1px solid rgba(8, 108, 105, 0.18);
+  border-radius: var(--radius-lg);
+  background: #eef8f7;
+  box-shadow: 0 14px 32px rgba(31, 42, 68, 0.08);
+}
+
+.ritual-inline-cta p {
+  margin: 0.35rem 0 0;
+}
+
+.ritual-timeline {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.ritual-timeline div {
+  display: grid;
+  grid-template-columns: minmax(76px, 0.22fr) minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.ritual-timeline strong {
+  color: var(--brand-primary);
+}
+
+.ritual-troubleshooting,
+.ritual-faq {
+  padding: clamp(1.5rem, 4vw, 2rem);
+  border: 1px solid rgba(31, 42, 68, 0.08);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: var(--shadow-card);
+}
+
+.ritual-fix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ritual-fix-grid article {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: #f7f8fb;
+}
+
+.ritual-fix-grid h3 {
+  margin-top: 0;
+}
+
+.ritual-faq details {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(31, 42, 68, 0.1);
+}
+
+.ritual-faq details:first-of-type {
+  border-top: 0;
+}
+
+.ritual-faq summary {
+  cursor: pointer;
+  color: var(--brand-dark);
+  font-weight: 800;
+}
+
+.ritual-source-note {
+  font-size: 0.95rem;
+  color: #4b5955;
+}
+
+@media (max-width: 700px) {
+  .ritual-inline-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ritual-fix-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ritual-timeline div {
+    grid-template-columns: 1fr;
+  }
+}
