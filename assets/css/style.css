@@ -2089,7 +2089,6 @@ footer a:focus {
 }
 
 .bedtime-rituals-article {
-  --bedtime-column-width: min(820px, 100%);
   max-width: 1120px;
 }
 
@@ -2104,7 +2103,7 @@ footer a:focus {
   gap: clamp(1.25rem, 4vw, 2.5rem) clamp(2rem, 5vw, 4rem);
   align-items: center;
   width: 100%;
-  max-width: var(--bedtime-column-width) !important;
+  max-width: var(--article-shell-width) !important;
   margin: 0 auto 2.5rem !important;
   overflow: hidden;
 }
@@ -2216,13 +2215,13 @@ footer a:focus {
 
 .bedtime-rituals-content {
   width: 100%;
-  max-width: var(--bedtime-column-width);
+  max-width: var(--article-shell-width);
   margin: 0 auto;
 }
 
-.bedtime-rituals-content > * {
+.bedtime-rituals-content > :is(.article-image, .ritual-snapshot, .ritual-step-card, .ritual-printable, .ritual-troubleshooting, .ritual-faq, .bedtime-cta-card, .article-callout, .ritual-inline-cta) {
   width: 100%;
-  max-width: var(--bedtime-column-width) !important;
+  max-width: var(--article-shell-width) !important;
   margin-inline: auto;
   box-sizing: border-box;
 }
