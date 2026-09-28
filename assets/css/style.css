@@ -1329,6 +1329,10 @@ article.section > p:first-child .btn-secondary:focus {
   margin-top: 3rem;
 }
 
+.article-content .hero-card + .article-callout {
+  margin-top: 3rem;
+}
+
 .article-callout strong {
   display: block;
   color: var(--brand-dark);
