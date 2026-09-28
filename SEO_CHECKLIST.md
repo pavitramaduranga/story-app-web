@@ -80,6 +80,15 @@ record the pattern under **Previous findings**.
 
 ## Pre-deployment checks
 
+Run the repo validation script first. It checks title and description lengths,
+canonical/sitemap alignment, duplicate canonicals, one-H1 structure, JSON-LD
+parseability, local internal links, accidental `/index.html` links, and image
+files larger than 300 KB that should be optimized before use on SEO pages:
+
+```powershell
+node scripts/validate-seo.mjs
+```
+
 Run this PowerShell check from the repository root. The result should be `0`:
 
 ```powershell
