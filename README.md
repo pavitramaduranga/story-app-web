@@ -10,17 +10,17 @@ child. The product does not provide audio stories or automatic narration.
 
 ## Site structure
 
-- `index.html` — marketing homepage
-- `app-links.html` — official App Store and Google Play links
-- `blogs.html` — article hub
-- `blog/<article-slug>/index.html` — preferred article layout
-- `sitemap.xml` and `robots.txt` — search discovery files
-- `assets/css/style.css` — shared styles
-- `assets/js/navigation.js` — navigation, canonical URL cleanup, GA4 loading,
+- `index.html`: marketing homepage
+- `app-links.html`: official App Store and Google Play links
+- `blogs.html`: article hub
+- `blog/<article-slug>/index.html`: preferred article layout
+- `sitemap.xml` and `robots.txt`: search discovery files
+- `assets/css/style.css`: shared styles
+- `assets/js/navigation.js`: navigation, canonical URL cleanup, GA4 loading,
   and site-wide click tracking
-- `assets/js/early-bird-form.js` — free-story/update form
-- `SITE_CORE_CONCEPTS.md` — durable product and editorial truth
-- `SEO_CHECKLIST.md` — technical SEO and publishing checks
+- `assets/js/early-bird-form.js`: free-story/update form
+- `SITE_CORE_CONCEPTS.md`: durable product and editorial truth
+- `SEO_CHECKLIST.md`: technical SEO and publishing checks
 
 Seven older articles still use root-level `blog-*.html` URLs. Preserve their
 established canonicals unless a separately reviewed migration is planned. New
@@ -78,9 +78,9 @@ Firestore collection. It sends `name`, `email`, `childrenAges`, `expectations`,
 
 Files involved:
 
-- `assets/js/firebase-config.js` — Firebase web-app configuration
-- `assets/js/firebase-config.example.js` — configuration template
-- `assets/js/early-bird-form.js` — Firebase initialization and form submission
+- `assets/js/firebase-config.js`: Firebase web-app configuration
+- `assets/js/firebase-config.example.js`: configuration template
+- `assets/js/early-bird-form.js`: Firebase initialization and form submission
 
 ### Firebase web configuration and secrets
 

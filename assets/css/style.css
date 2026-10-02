@@ -2545,7 +2545,7 @@ footer a:focus {
   }
 }
 
-/* Readability and download refresh — September 2026. */
+/* Readability and download refresh, September 2026. */
 :where(a, button, summary, input, textarea, select, [tabindex]):focus-visible {
   outline: 3px solid #086c69;
   outline-offset: 4px;
