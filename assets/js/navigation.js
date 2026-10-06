@@ -118,7 +118,8 @@
     const contextualParams = {
       content_slug: getTrackingAttribute(link, 'data-content-slug'),
       content_topic: getTrackingAttribute(link, 'data-content-topic'),
-      cta_variant: getTrackingAttribute(link, 'data-cta-variant')
+      cta_variant: getTrackingAttribute(link, 'data-cta-variant'),
+      engagement_target: link.getAttribute('data-engagement-link') || ''
     };
 
     Object.entries(contextualParams).forEach(([name, value]) => {
@@ -131,8 +132,19 @@
         name: `${appStore}_click`,
         params: {
           ...baseParams,
-          app_store: appStore
-        }
+          app_store: appStore,
+          conversion_type: 'app_store_click'
+        },
+        additionalEvents: [
+          {
+            name: 'app_download_click',
+            params: {
+              ...baseParams,
+              app_store: appStore,
+              conversion_type: 'app_store_click'
+            }
+          }
+        ]
       };
     }
 
@@ -147,6 +159,26 @@
       return {
         name: 'early_bird_signup_click',
         params: baseParams
+      };
+    }
+
+    if (url.pathname.endsWith('/app-links.html')) {
+      return {
+        name: 'app_download_intent',
+        params: {
+          ...baseParams,
+          conversion_type: 'download_page_click'
+        }
+      };
+    }
+
+    if (link.hasAttribute('data-engagement-link') || url.hash) {
+      return {
+        name: 'homepage_engagement_click',
+        params: {
+          ...baseParams,
+          engagement_target: link.getAttribute('data-engagement-link') || url.hash.replace('#', '')
+        }
       };
     }
 
@@ -181,8 +213,18 @@
       transport_type: 'beacon'
     };
 
+    const sendAdditionalEvents = () => {
+      (trackedClick.additionalEvents || []).forEach((extraEvent) => {
+        window.gtag('event', extraEvent.name, {
+          ...extraEvent.params,
+          transport_type: 'beacon'
+        });
+      });
+    };
+
     if (!shouldDelayNavigation) {
       window.gtag('event', trackedClick.name, params);
+      sendAdditionalEvents();
       return;
     }
 
@@ -197,7 +239,10 @@
 
     window.gtag('event', trackedClick.name, {
       ...params,
-      event_callback: continueNavigation,
+      event_callback: () => {
+        sendAdditionalEvents();
+        continueNavigation();
+      },
       event_timeout: 800
     });
 
@@ -206,6 +251,21 @@
 
   function initializeIntentTracking() {
     document.addEventListener('click', trackClickIntent);
+  }
+
+  function initializeFaqTracking() {
+    document.querySelectorAll('.faq-list details').forEach((details) => {
+      details.addEventListener('toggle', () => {
+        if (!details.open || typeof window.gtag !== 'function') return;
+
+        const summary = details.querySelector('summary');
+        window.gtag('event', 'faq_opened', {
+          faq_question: (summary?.textContent || '').replace(/\s+/g, ' ').trim(),
+          link_location: getPageLocation(details),
+          cta_placement: 'faq'
+        });
+      });
+    });
   }
 
   function initializeFooterYear() {
@@ -219,6 +279,7 @@
     initializeFooterYear();
     ensureAnalyticsLoaded();
     initializeIntentTracking();
+    initializeFaqTracking();
   }
 
   canonicalizeIndexUrl();

@@ -2555,17 +2555,29 @@ footer a:focus {
   animation: none;
 }
 .home-hero {
-  width: 100%; max-width: 1200px; margin: 0 auto; padding: 3rem 0;
+  width: 100%; max-width: 1200px; margin: 0 auto; padding: clamp(2rem, 4vw, 3rem) 0 clamp(1rem, 2vw, 1.5rem);
   min-height: 0; grid-template-columns: 1.1fr 1fr; align-items: center;
   background: transparent; gap: 2.5rem; overflow: visible;
 }
 .home-hero::after { content: none; }
 .home-hero picture { position: static; z-index: auto; grid-column: 2; grid-row: 1; }
-.home-hero img { height: auto; aspect-ratio: 1 / 1; border-radius: 1.5rem; object-fit: cover; }
+.home-hero img { height: auto; aspect-ratio: 4 / 3; border-radius: 1.5rem; object-fit: cover; }
 .home-hero-copy { grid-column: 1; grid-row: 1; width: 100%; margin: 0; padding: 0; color: var(--brand-dark); }
 .home-hero h1 { font-size: clamp(2rem, 3.8vw, 3.25rem); line-height: 1.12; }
 .home-hero p:not(.hero-brand) { color: var(--text-body); font-size: 1.125rem; }
 .home-hero .download-access, .download-access { font-size: 0.95rem !important; margin: 1rem 0 !important; color: var(--text-body); }
+.free-download-pill {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 1rem !important;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(8, 108, 105, 0.18);
+  border-radius: 999px;
+  background: rgba(8, 108, 105, 0.09);
+  color: var(--brand-primary) !important;
+  font-size: 0.98rem !important;
+  font-weight: 800;
+}
 .home-hero .hero-actions { gap: 1rem; }
 .preview-link { display: inline-block; padding: 0.5rem 0; }
 .home-hero .hero-actions, .app-preview .hero-actions { justify-content: flex-start; }
@@ -2624,6 +2636,68 @@ h2, h3 { line-height: 1.2; }
 .hero-card .btn-secondary, .hero-card .btn-secondary:hover, .hero-card .btn-secondary:focus { background: #fffaf0; color: #24312f; }
 footer :focus-visible, .cta-card :focus-visible, .article-content .hero-card :focus-visible, .about-hero .hero-card :focus-visible { outline-color: #ffd26b; }
 .article-content .hero-card a:not(.btn):not(.store-badge-link) { color: #fffaf0; }
+
+/* Direct homepage engagement path, October 2026. */
+.direct-path-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  column-gap: clamp(1.5rem, 4vw, 2.5rem);
+  row-gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
+  margin: clamp(1.25rem, 2.5vw, 2rem) auto clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.direct-path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.direct-path-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(1.1rem, 2.5vw, 1.35rem);
+  border: 1px solid rgba(8, 108, 105, 0.16);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 30px rgba(36, 49, 47, 0.08);
+}
+
+.direct-path-card h3 {
+  margin: 0 0 0.65rem;
+  color: var(--brand-dark);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+}
+
+.direct-path-card p {
+  margin: 0 0 1rem;
+  color: rgba(43, 43, 43, 0.82);
+}
+
+.direct-path-card .btn {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.direct-path-card .btn-secondary {
+  background: rgba(8, 108, 105, 0.08);
+  border: 1px solid rgba(8, 108, 105, 0.22);
+  color: var(--brand-primary);
+}
+
+.direct-path-card .btn-secondary:hover,
+.direct-path-card .btn-secondary:focus {
+  background: rgba(8, 108, 105, 0.14);
+  color: var(--brand-dark);
+}
+
+@media (max-width: 1100px) {
+  .direct-path-section,
+  .direct-path-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Show the full blog hero photograph and discover it directly from HTML. */
 .blog-hub-page .brand-logo { width: 56px; height: 56px; }
