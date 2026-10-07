@@ -101,6 +101,49 @@
     return element?.getAttribute(attribute)?.trim() || '';
   }
 
+  function getCampaignParams() {
+    const currentParams = new URLSearchParams(window.location.search);
+    const campaignParams = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((name) => {
+      const value = currentParams.get(name);
+      if (value) campaignParams[name] = value;
+    });
+
+    if (!campaignParams.utm_source && /(^|\.)pinterest\./i.test(document.referrer)) {
+      campaignParams.utm_source = 'pinterest';
+      campaignParams.utm_medium = 'social';
+      campaignParams.utm_campaign = 'pinterest_sales_funnel';
+    }
+
+    return campaignParams;
+  }
+
+  function getCampaignEventParams() {
+    const campaignParams = getCampaignParams();
+    return Object.fromEntries(
+      Object.entries(campaignParams).map(([name, value]) => [
+        name.replace(/^utm_/, 'campaign_'),
+        value
+      ])
+    );
+  }
+
+  function withCampaignParams(href, fallbackParams = {}) {
+    const url = new URL(href, window.location.href);
+    const campaignParams = {
+      ...fallbackParams,
+      ...getCampaignParams()
+    };
+
+    Object.entries(campaignParams).forEach(([name, value]) => {
+      if (value && !url.searchParams.has(name)) {
+        url.searchParams.set(name, value);
+      }
+    });
+
+    return url.href;
+  }
+
   function getTrackedClick(link) {
     const href = link.href || '';
     const url = new URL(href, window.location.href);
@@ -108,11 +151,13 @@
     const baseParams = {
       link_location: getPageLocation(link),
       cta_placement: link.closest('footer') ? 'footer' :
+        link.getAttribute('data-cta-placement') ||
         link.closest('[data-cta-placement]')?.getAttribute('data-cta-placement') ||
         (link.closest('nav') ? 'navigation' : link.closest('.article-content') ? 'article' :
           link.closest('.hero') ? 'hero' : link.closest('.cta-card') ? 'closing' : 'content'),
       link_text: linkText,
-      outbound_url: url.href
+      outbound_url: url.href,
+      ...getCampaignEventParams()
     };
 
     const contextualParams = {
@@ -268,6 +313,24 @@
     });
   }
 
+  function initializeCampaignLinkDecoration() {
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const url = new URL(link.href, window.location.href);
+
+      if (url.hostname === 'apps.apple.com' || url.hostname === 'play.google.com') {
+        link.href = withCampaignParams(url.href);
+      }
+
+      if (/^(.+\.)?pinterest\.com$/i.test(url.hostname)) {
+        link.href = withCampaignParams(url.href, {
+          utm_source: 'baboo_stories',
+          utm_medium: 'website',
+          utm_campaign: 'pinterest_profile'
+        });
+      }
+    });
+  }
+
   function initializeFooterYear() {
     document.querySelectorAll('#year, #current-year').forEach((yearElement) => {
       yearElement.textContent = new Date().getFullYear();
@@ -278,6 +341,7 @@
     document.querySelectorAll('.nav-toggle').forEach(initializeNavigation);
     initializeFooterYear();
     ensureAnalyticsLoaded();
+    initializeCampaignLinkDecoration();
     initializeIntentTracking();
     initializeFaqTracking();
   }

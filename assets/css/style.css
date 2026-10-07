@@ -2748,6 +2748,78 @@ footer :focus-visible, .cta-card :focus-visible, .article-content .hero-card :fo
 .blog-newsletter-card .hero-actions { justify-content: flex-start; gap: 0.85rem; }
 .blog-newsletter-card .btn-secondary { border: 1px solid #086c69; }
 
+/* Pinterest/mobile app-link funnel. */
+.app-links-page main {
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.app-links-page .navbar {
+  padding-block: 0.75rem;
+}
+
+.app-links-page .nav-toggle,
+.app-links-page .nav-links {
+  display: none;
+}
+
+.app-links-page .app-download-hero {
+  max-width: 760px;
+  padding-top: clamp(1.75rem, 5vw, 3.25rem);
+  text-align: center;
+}
+
+.app-links-page .app-download-hero .hero-card h1 {
+  margin: 0 auto 0.8rem;
+  max-width: 13ch;
+  font-size: clamp(2.35rem, 8vw, 4.35rem);
+}
+
+.app-download-benefit {
+  margin: 0 auto 0.85rem !important;
+  color: var(--brand-dark) !important;
+  font-size: clamp(1.05rem, 3vw, 1.3rem) !important;
+  font-weight: 800;
+}
+
+.app-links-page .download-access {
+  margin: 0 auto 1.15rem !important;
+}
+
+.app-links-page .app-download-hero .hero-actions {
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.app-links-page .app-download-hero .store-badge-link img {
+  height: 48px;
+}
+
+.app-links-page .app-preview {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+@media (max-width: 520px) {
+  .app-links-page main {
+    padding-inline: 1rem;
+  }
+
+  .app-links-page .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .app-links-page .app-download-hero .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .app-links-page .app-download-hero .store-badge-link,
+  .app-links-page .app-download-hero .store-badge-link img {
+    width: min(100%, 210px);
+    height: auto;
+  }
+}
+
 /* Enhanced bedtime rituals article */
 .ritual-inline-cta {
   display: flex;
