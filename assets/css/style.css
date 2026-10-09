@@ -2660,6 +2660,32 @@ footer a:focus {
 .home-hero h1 { font-size: clamp(2rem, 3.8vw, 3.25rem); line-height: 1.12; }
 .home-hero p:not(.hero-brand) { color: var(--text-body); font-size: 1.125rem; }
 .home-hero .download-access, .download-access { font-size: 0.95rem !important; margin: 1rem 0 !important; color: var(--text-body); }
+.cta-access-heading {
+  margin: 1rem 0 0.75rem;
+  color: var(--brand-dark);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+.app-preview .cta-access-heading,
+.app-preview .download-access,
+.cta-card .cta-access-heading,
+.cta-card .download-access {
+  text-align: center;
+}
+.cta-card .cta-access-heading,
+.cta-card .download-access,
+.article-content .hero-card .cta-access-heading,
+.article-content .hero-card .download-access {
+  color: white;
+}
+.cta-secondary-link {
+  margin: 0 !important;
+  text-align: center;
+  font-size: 0.95rem !important;
+}
+.cta-card .cta-secondary-link a {
+  color: #fffaf0 !important;
+}
 .free-download-pill {
   display: inline-flex;
   width: fit-content;
@@ -2877,6 +2903,11 @@ footer :focus-visible, .cta-card :focus-visible, .article-content .hero-card :fo
 
 .app-links-page .download-access {
   margin: 0 auto 1.15rem !important;
+}
+
+.app-links-page .cta-access-heading {
+  margin: 0 auto 0.75rem;
+  color: var(--brand-dark);
 }
 
 .app-links-page .app-download-hero .hero-actions {
