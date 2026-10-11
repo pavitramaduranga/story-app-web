@@ -78,6 +78,143 @@ record the pattern under **Previous findings**.
   }
   ```
 
+## Repeatable article refresh validation
+
+Use this section whenever an existing article is updated, including when the
+brief or suggested copy was produced by Claude, ChatGPT, another AI tool, or a
+third party. Treat the supplied analysis as a draft specification: verify every
+claim and requested change against the current repository before accepting it.
+
+### 1. Establish the baseline and protected content
+
+- [ ] Record the target file, public canonical URL, requested modification date,
+  and related `sitemap.xml` entry before editing.
+- [ ] Identify content that must not change, such as story text, rhyme lyrics,
+  medical or pediatrician guidance, CTA blocks, canonical URLs, and existing
+  in-page image sources.
+- [ ] Inspect the current page instead of assuming the brief accurately
+  describes its title, headings, dates, FAQ, card position, footer, or schema.
+- [ ] After editing, compare protected sections with the pre-edit Git version
+  and confirm that only explicitly authorized text changed.
+
+### 2. Metadata, headings, and URL consistency
+
+- [ ] Confirm `<title>`, `og:title`, `twitter:title`, `<h1>`, JSON-LD headline,
+  and breadcrumb name follow the requested relationship. They do not need to be
+  identical unless the brief requires it.
+- [ ] Encode literal ampersands in HTML attributes and visible HTML as `&amp;`.
+- [ ] Keep the canonical URL unchanged during a content refresh unless a URL
+  migration is explicitly approved.
+- [ ] Confirm `og:url`, `mainEntityOfPage`, breadcrumb URLs, internal links, and
+  the sitemap use the canonical public URL format.
+- [ ] Add or retain `<meta name="robots" content="index, follow,
+  max-image-preview:large" />` on indexable articles when that is the site
+  pattern.
+- [ ] Check that the blog-hub card title, description, button, and destination
+  are still accurate after an article title or scope changes.
+
+### 3. Visible dates, JSON-LD, and sitemap dates
+
+- [ ] Show the requested updated date in the visible `.meta` line.
+- [ ] Set Article `dateModified` to the same calendar date using the full
+  timezone-aware value, for example `2026-10-11T00:00:00+05:30`.
+- [ ] Set the matching sitemap `<lastmod>` to the same date in `YYYY-MM-DD`
+  format and confirm exactly one sitemap entry exists for the canonical URL.
+- [ ] Update dates only when the page received a meaningful content or
+  technical improvement; do not manufacture freshness signals.
+
+### 4. Structured-data and visible-content parity
+
+- [ ] Parse every `application/ld+json` block as JSON after editing.
+- [ ] If `FAQPage` schema is present, confirm every schema question appears in
+  the visible FAQ and every answer matches its visible answer word for word.
+- [ ] Remove stale schema questions that are not visible and do not add schema
+  solely to hide extra content from readers.
+- [ ] Confirm Article image URLs exist and represent the page appropriately.
+- [ ] Validate the deployed page with Google Rich Results Test after publishing;
+  source inspection alone cannot confirm Google's rendered result.
+
+### 5. Images and loading behavior
+
+- [ ] Use `fetchpriority="high"` only for the primary above-the-fold image.
+- [ ] Use `loading="lazy"` for below-the-fold article images unless there is a
+  measured reason not to.
+- [ ] Prefer a landscape social-sharing image that crops well for Open Graph and
+  Twitter previews; confirm `og:image`, `twitter:image`, and the primary
+  JSON-LD image are intentionally aligned.
+- [ ] Give `og:image:alt` accurate contextual wording and verify the referenced
+  local image asset exists.
+- [ ] Do not silently replace in-page screenshots or illustrations when the
+  brief authorizes only social-image changes.
+
+### 6. Content quality, safety, and claims
+
+- [ ] Check the opening paragraphs for missing context, broken transitions, or
+  copy that assumes a sentence was present when it is not.
+- [ ] Avoid guilt-based labels and blame. Prefer language such as “common
+  struggles,” “gentle options,” and “what to try.”
+- [ ] Hedge developmental, educational, sleep, health, and behavioral claims
+  when evidence supports possibility rather than certainty (`can help`, `may`,
+  or `is associated with`).
+- [ ] Preserve medical disclaimers and advice to contact a qualified clinician
+  unless an evidence-backed edit is explicitly requested.
+- [ ] Add credible sources near guidance claims, keep original website content
+  clearly distinguished from app content, and never imply clinical validation.
+- [ ] Check physical activity instructions for practical safety wording,
+  especially circling, rocking, jumping, arches, and falling-down actions.
+
+### 7. Navigation and internal linking
+
+- [ ] Confirm each jump-link `href="#id"` has exactly one matching unique ID.
+- [ ] Add descriptive contextual links where they genuinely help the reader;
+  avoid duplicating links only for keyword repetition.
+- [ ] Include a useful “Read next” or related-reading path before the final CTA
+  when appropriate.
+- [ ] Verify all new local links resolve and use the site's canonical URL style.
+- [ ] When reordering the blog hub, move complete `<article class="card">`
+  blocks only, then confirm the card count and unique destination count are
+  unchanged and all unselected cards retain their prior relative order.
+
+### 8. Page-template consistency
+
+- [ ] Compare the footer and navigation script with the current approved
+  reference page when a consistency update is requested.
+- [ ] Confirm the dynamic copyright year uses
+  `<span id="current-year"></span>` where that is the current template.
+- [ ] Preserve or add the expected `data-content-slug` and
+  `data-content-topic` attributes used by page analytics and CTA tracking.
+- [ ] Confirm CTA data attributes, wording, store destinations, and blocks are
+  unchanged when the brief says to leave CTAs alone.
+
+### 9. Required completion evidence
+
+- [ ] Run `node scripts/validate-seo.mjs` and investigate every relevant error.
+- [ ] Run `git diff --check`.
+- [ ] Review the final diff and confirm only intended files and lines changed.
+- [ ] Record counts where useful: H1s, cards, FAQ items, jump targets,
+  `fetchpriority="high"` images, sitemap entries, and changed protected blocks.
+- [ ] Report tests honestly. Distinguish source checks from deployed-page,
+  Search Console, Rich Results, analytics, and performance validation.
+
+### Article refresh validation record
+
+Copy this compact record into the task notes or change log for each batch:
+
+| Field | Result |
+| --- | --- |
+| Page and canonical URL |  |
+| Requested update date |  |
+| Protected content checked |  |
+| Metadata and H1 checked |  |
+| JSON-LD parsed and visible FAQ matched |  |
+| Image priority and social image checked |  |
+| Internal links and jump targets checked |  |
+| Sitemap entry and date checked |  |
+| Blog-hub card checked |  |
+| CTA/footer/script consistency checked |  |
+| Validation commands and result |  |
+| Deployment/Search Console follow-up |  |
+
 ## Pre-deployment checks
 
 Run the repo validation script first. It checks title and description lengths,
