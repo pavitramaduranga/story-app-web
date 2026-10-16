@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (window.location.pathname.endsWith('/index.html')) {
+        window.location.replace(window.location.pathname.slice(0, -10) + window.location.search + window.location.hash);
+      }
+    </script>
     <meta
       name="description"
       content="Try small invitations to read together and adapt them as your child becomes interested. These flexible ideas are not developmental milestones."
