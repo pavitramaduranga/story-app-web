@@ -101,6 +101,40 @@
     return element?.getAttribute(attribute)?.trim() || '';
   }
 
+  function getContentType(path) {
+    if (path === '/' || path === '/index.html') return 'homepage';
+    if (path === '/app-links.html') return 'download_page';
+    if (path === '/blogs.html') return 'blog_hub';
+    if (path.startsWith('/blog/')) {
+      if (/bedtime-stories-for-[2-5]-year-olds|bedtime-stories-by-age/.test(path)) return 'age_hub';
+      if (/best-bedtime-story-app/.test(path)) return 'comparison';
+      return 'blog';
+    }
+    if (path.startsWith('/blog-')) return /3-year-olds/.test(path) ? 'age_hub' : 'blog';
+    return 'page';
+  }
+
+  function getCtaLocation(link) {
+    return link.getAttribute('data-cta-placement') ||
+      getTrackingAttribute(link, 'data-cta-placement') ||
+      (link.closest('footer') ? 'footer' : link.closest('nav') ? 'navigation' : 'content');
+  }
+
+  function getCtaId(link, platform = 'app') {
+    const suppliedId = link.getAttribute('data-cta-id') || getTrackingAttribute(link, 'data-cta-id');
+    if (suppliedId) return suppliedId;
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const slug = path.split('/').filter(Boolean).pop()?.replace(/\.html$/, '') || 'home';
+    return `${slug}_${getCtaLocation(link)}_${platform}`.toLowerCase().replace(/[^a-z0-9_]+/g, '_');
+  }
+
+  function isPromotionalAppCta(link) {
+    return link.hasAttribute('data-app-cta') ||
+      link.hasAttribute('data-cta-placement') ||
+      Boolean(link.closest('[data-cta-placement]')) ||
+      link.classList.contains('nav-download-link');
+  }
+
   function getCampaignParams() {
     const currentParams = new URLSearchParams(window.location.search);
     const campaignParams = {};
@@ -147,49 +181,33 @@
   function getTrackedClick(link) {
     const href = link.href || '';
     const url = new URL(href, window.location.href);
-    const linkText = getVisibleText(link);
+    const sourcePage = window.location.pathname || '/';
+    const ctaLocation = getCtaLocation(link);
     const baseParams = {
       link_location: getPageLocation(link),
-      cta_placement: link.closest('footer') ? 'footer' :
-        link.getAttribute('data-cta-placement') ||
-        link.closest('[data-cta-placement]')?.getAttribute('data-cta-placement') ||
-        (link.closest('nav') ? 'navigation' : link.closest('.article-content') ? 'article' :
-          link.closest('.hero') ? 'hero' : link.closest('.cta-card') ? 'closing' : 'content'),
-      link_text: linkText,
+      cta_placement: ctaLocation,
+      link_text: getVisibleText(link),
       outbound_url: url.href,
       ...getCampaignEventParams()
     };
 
-    const contextualParams = {
-      content_slug: getTrackingAttribute(link, 'data-content-slug'),
-      content_topic: getTrackingAttribute(link, 'data-content-topic'),
-      cta_variant: getTrackingAttribute(link, 'data-cta-variant'),
-      engagement_target: link.getAttribute('data-engagement-link') || ''
-    };
-
-    Object.entries(contextualParams).forEach(([name, value]) => {
+    ['content_slug', 'content_topic', 'cta_variant'].forEach((name) => {
+      const value = getTrackingAttribute(link, `data-${name.replaceAll('_', '-')}`);
       if (value) baseParams[name] = value;
     });
 
     if (url.hostname === 'apps.apple.com' || url.hostname === 'play.google.com') {
-      const appStore = inferStore(link);
+      const platform = inferStore(link) === 'app_store' ? 'ios' : 'android';
       return {
-        name: `${appStore}_click`,
+        name: 'app_store_click',
         params: {
-          ...baseParams,
-          app_store: appStore,
-          conversion_type: 'app_store_click'
-        },
-        additionalEvents: [
-          {
-            name: 'app_download_click',
-            params: {
-              ...baseParams,
-              app_store: appStore,
-              conversion_type: 'app_store_click'
-            }
-          }
-        ]
+          platform,
+          source_page: sourcePage,
+          cta_id: getCtaId(link, platform),
+          cta_location: ctaLocation,
+          content_type: getContentType(sourcePage),
+          destination: platform === 'ios' ? 'app_store' : 'google_play'
+        }
       };
     }
 
@@ -200,19 +218,22 @@
       };
     }
 
-    if (url.pathname.endsWith('/early-bird-signup.html')) {
+    if (url.origin === window.location.origin && url.pathname.endsWith('/early-bird-signup.html')) {
       return {
         name: 'early_bird_signup_click',
         params: baseParams
       };
     }
 
-    if (url.pathname.endsWith('/app-links.html')) {
+    if (url.origin === window.location.origin && url.pathname.endsWith('/app-links.html') && isPromotionalAppCta(link)) {
       return {
-        name: 'app_download_intent',
+        name: 'app_cta_click',
         params: {
-          ...baseParams,
-          conversion_type: 'download_page_click'
+          source_page: sourcePage,
+          cta_id: getCtaId(link),
+          cta_location: ctaLocation,
+          destination: '/app-links.html',
+          content_type: getContentType(sourcePage)
         }
       };
     }
@@ -230,19 +251,6 @@
     return null;
   }
 
-  function shouldLetBrowserHandleClick(event, link) {
-    return (
-      event.defaultPrevented ||
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey ||
-      link.target.toLowerCase() === '_blank' ||
-      link.hasAttribute('download')
-    );
-  }
-
   function trackClickIntent(event) {
     if (!event.target || typeof event.target.closest !== 'function') return;
 
@@ -252,46 +260,10 @@
     const trackedClick = getTrackedClick(link);
     if (!trackedClick) return;
 
-    const shouldDelayNavigation = !shouldLetBrowserHandleClick(event, link);
-    const params = {
+    window.gtag('event', trackedClick.name, {
       ...trackedClick.params,
       transport_type: 'beacon'
-    };
-
-    const sendAdditionalEvents = () => {
-      (trackedClick.additionalEvents || []).forEach((extraEvent) => {
-        window.gtag('event', extraEvent.name, {
-          ...extraEvent.params,
-          transport_type: 'beacon'
-        });
-      });
-    };
-
-    if (!shouldDelayNavigation) {
-      window.gtag('event', trackedClick.name, params);
-      sendAdditionalEvents();
-      return;
-    }
-
-    event.preventDefault();
-
-    let navigationStarted = false;
-    const continueNavigation = () => {
-      if (navigationStarted) return;
-      navigationStarted = true;
-      window.location.href = link.href;
-    };
-
-    window.gtag('event', trackedClick.name, {
-      ...params,
-      event_callback: () => {
-        sendAdditionalEvents();
-        continueNavigation();
-      },
-      event_timeout: 800
     });
-
-    window.setTimeout(continueNavigation, 900);
   }
 
   function initializeIntentTracking() {
