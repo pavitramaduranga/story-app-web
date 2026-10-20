@@ -14,14 +14,26 @@ Last updated: 20 October 2026
 
 | Event | Trigger | Parameters |
 |---|---|---|
-| `app_cta_click` | A promotional internal link to `/app-links.html`. Explicit `data-cta-placement`, an ancestor with that attribute, `data-app-cta`, or the existing `.nav-download-link` class identifies promotion. | `source_page`, `cta_id`, `cta_location`, `destination`, `content_type` |
+| `app_cta_click` | A promotional internal link to `/app-links.html`. Explicit `data-cta-placement`, an ancestor with that attribute, `data-app-cta`, `data-engagement-link`, a `.btn` link, a CTA container (`.article-cta`, `.article-app-discovery`, or `.app-download-cta`), or the existing `.nav-download-link` class identifies promotion. | `source_page`, `cta_id`, `cta_location`, `destination`, `content_type` |
 | `app_store_click` | A link to `apps.apple.com` or `play.google.com`. | `platform` (`ios` or `android`), `source_page`, `cta_id`, `cta_location`, `content_type`, `destination` (`app_store` or `google_play`) |
 
-`cta_id` is a stable slug derived from the page path, CTA location, and platform unless the link supplies `data-cta-id`. Use `data-cta-placement` on the link or its CTA container to identify placements such as `hero`, `introduction`, `mid_stories`, `closing`, `preview`, `store_card`, and `footer`. Existing links without JavaScript continue to work. Tracking uses the existing `gtag` queue and beacon transport; the handler does not cancel clicks or wait for analytics callbacks.
+`cta_id` is a stable slug derived from the page path, CTA location, and platform unless the link supplies `data-cta-id`. Use `data-cta-placement` on the link or its CTA container to identify placements such as `hero`, `introduction`, `mid_stories`, `closing`, `preview`, `store_card`, and `footer`. Buttons in the homepage direct-path cards use `direct_path`; button links inside article callouts use `article_callout`. Existing links without JavaScript continue to work. Tracking uses the existing `gtag` queue and beacon transport; the handler does not cancel clicks or wait for analytics callbacks.
 
 The handler emits only one custom app-store event for a store click. GA4 Enhanced Measurement may separately emit its automatic `click` event for outbound links; it is not the app conversion event and should not be added to app-store click totals. Whether Enhanced Measurement is enabled is a property setting and was not verifiable from this repository.
 
 GA4's session attribution dimensions identify organic search and the session landing page. The implementation does not copy a landing page into storage or send a custom `original_landing_page` value, which avoids stale attribution across visits. No personal information or full destination URL is sent in these custom events.
+
+## Legacy event migration and report impact
+
+The October 20 implementation standardized both store destinations as `app_store_click` with `platform=ios` or `platform=android`. Before this change, iOS clicks emitted `app_store_click` plus `app_download_click`; Google Play clicks emitted `google_play_click` plus `app_download_click`. Internal download-page clicks emitted `app_download_intent`. These duplicate/legacy names are no longer emitted. The homepage “Download free” link also moves from `homepage_engagement_click` to `app_cta_click`; other homepage engagement links keep their existing event.
+
+Update reports as follows:
+
+- Replace `app_download_intent` with `app_cta_click` for promotional internal app-download links.
+- Replace `app_download_click` and `google_play_click` with `app_store_click`, split by `platform` for iOS vs. Android.
+- Historical `app_store_click` records are iOS-only and use the old `app_store` parameter. New records include `platform`; historical records therefore appear as `(not set)` for that dimension. Historical `google_play_click` records remain under their old name and are not retroactively renamed.
+- Expect `homepage_engagement_click` counts for the “Download free” action to stop increasing; that action is now counted in `app_cta_click`.
+- For pre-migration comparisons, combine old and new event names or annotate the change date. GA4 retains historical events, and this code does not send compatibility duplicates because that would double-count current store clicks.
 
 ## Coverage
 
@@ -65,3 +77,5 @@ For the most accurate denominator, create a session segment or exploration condi
 5. Use Realtime to check event arrival; DebugView is better for checking event parameters. Property filters, consent, ad blockers, and network conditions can prevent events from appearing.
 
 This repository check confirms one initializer in the shared script and one delegated click handler. It cannot confirm live delivery to the GA4 property, Enhanced Measurement settings, consent configuration outside this repository, or actual app installs. No key event/conversion has been configured; app-store clicks should only be marked as a key event if the business explicitly wants to treat download intent as a key event.
+
+Run the local event wiring tests with `node --test tests/navigation-analytics.test.js`. They cover event names and parameter values for homepage, age-hub, age-article, article CTA, Apple, and Google Play clicks; ordinary editorial links; and single-event delivery without retired duplicate names.

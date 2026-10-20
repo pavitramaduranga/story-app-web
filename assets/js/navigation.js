@@ -106,18 +106,24 @@
     if (path === '/app-links.html') return 'download_page';
     if (path === '/blogs.html') return 'blog_hub';
     if (path.startsWith('/blog/')) {
-      if (/bedtime-stories-for-[2-5]-year-olds|bedtime-stories-by-age/.test(path)) return 'age_hub';
+      if (/^\/blog\/bedtime-stories-by-age\/?$/.test(path)) return 'age_hub';
+      if (/^\/blog\/bedtime-stories-for-[2-5]-year-olds\/?$/.test(path)) return 'age_article';
       if (/best-bedtime-story-app/.test(path)) return 'comparison';
       return 'blog';
     }
-    if (path.startsWith('/blog-')) return /3-year-olds/.test(path) ? 'age_hub' : 'blog';
+    if (/^\/blog-bedtime-stories-for-[2-5]-year-olds\.html$/.test(path)) return 'age_article';
+    if (path.startsWith('/blog-')) return 'blog';
     return 'page';
   }
 
   function getCtaLocation(link) {
-    return link.getAttribute('data-cta-placement') ||
-      getTrackingAttribute(link, 'data-cta-placement') ||
-      (link.closest('footer') ? 'footer' : link.closest('nav') ? 'navigation' : 'content');
+    const explicitLocation = link.getAttribute('data-cta-placement') ||
+      getTrackingAttribute(link, 'data-cta-placement');
+    if (explicitLocation) return explicitLocation;
+    if (link.closest('.direct-path-card')) return 'direct_path';
+    if (link.closest('.article-callout')) return 'article_callout';
+    if (link.closest('.article-cta, .app-download-cta')) return 'article_cta';
+    return link.closest('footer') ? 'footer' : link.closest('nav') ? 'navigation' : 'content';
   }
 
   function getCtaId(link, platform = 'app') {
@@ -130,9 +136,12 @@
 
   function isPromotionalAppCta(link) {
     return link.hasAttribute('data-app-cta') ||
+      link.hasAttribute('data-engagement-link') ||
       link.hasAttribute('data-cta-placement') ||
       Boolean(link.closest('[data-cta-placement]')) ||
-      link.classList.contains('nav-download-link');
+      link.classList.contains('nav-download-link') ||
+      link.classList.contains('btn') ||
+      Boolean(link.closest('.article-cta, .article-app-discovery, .app-download-cta'));
   }
 
   function getCampaignParams() {
