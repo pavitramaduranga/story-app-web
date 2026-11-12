@@ -21,6 +21,7 @@ child. The product does not provide audio stories or automatic narration.
 - `assets/js/early-bird-form.js`: free-story/update form
 - `SITE_CORE_CONCEPTS.md`: durable product and editorial truth
 - `SEO_CHECKLIST.md`: technical SEO and publishing checks
+- `OPENSEO_MCP.md`: OpenSEO MCP connections and SEO/CRO analysis workflow
 
 Seven older articles still use root-level `blog-*.html` URLs. Preserve their
 established canonicals unless a separately reviewed migration is planned. New
