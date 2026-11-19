@@ -1116,6 +1116,14 @@ article.section > p:first-child .btn-secondary:focus {
   font-size: clamp(1.02rem, 1.8vw, 1.2rem);
 }
 
+.article-start-here {
+  max-width: 720px;
+  margin: 1rem 0 0;
+  padding: 0.85rem 1rem;
+  border-left: 0.25rem solid #d9a441;
+  background: rgba(255, 248, 226, 0.75);
+}
+
 .article-hero .meta {
   color: rgba(51, 64, 61, 0.68);
   font-weight: 700;
